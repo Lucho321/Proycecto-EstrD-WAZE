@@ -485,7 +485,6 @@ public class WazeController implements Initializable {
 
     @FXML
     private void clickLine(MouseEvent event) {
-        System.out.println("Lulu ");
         Line l = (Line)(event.getSource());
         l.setStroke(Color.RED);
 
@@ -494,7 +493,7 @@ public class WazeController implements Initializable {
     @FXML
     private void clickCircle(MouseEvent event) {
         Circle c = (Circle)event.getSource();
-        c.setStroke(Color.RED);
+        c.setFill(Color.RED);
        
     }
     
