@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="waze.WazeController">
-    
-</AnchorPane>
+<SplitPane dividerPositions="0.37861915367483295" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="waze.WazeController">
+   <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="312.0">
+         <children>
+            <Label layoutX="122.0" layoutY="40.0" text="WAZE PZ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="611.0">
+         <children>
+            <ImageView fx:id="mapa" fitHeight="523.0" fitWidth="472.0" layoutX="28.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@util/Mapa1.PNG" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </items>
+</SplitPane>
