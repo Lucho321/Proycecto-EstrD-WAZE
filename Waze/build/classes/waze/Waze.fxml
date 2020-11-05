@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
@@ -18,6 +19,9 @@
                   <Font size="15.0" />
                </font>
             </Label>
+            <CheckBox fx:id="btnlineas" layoutX="101.0" layoutY="552.0" mnemonicParsing="false" onAction="#actLineas" text="Líneas" />
+            <CheckBox fx:id="btnVerices" layoutX="190.0" layoutY="552.0" mnemonicParsing="false" onAction="#actVertices" text="Vértices" />
+            <Label layoutX="57.0" layoutY="552.0" text="Ver:" />
          </children></AnchorPane>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="611.0">
          <children>
@@ -26,231 +30,215 @@
                   <Image url="@../imagenes/Mapa.png" />
                </image>
             </ImageView>
-            <Line fx:id="line91" endX="268.33331298828125" endY="-51.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="284.33331298828125" startY="-45.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line92" endX="275.0" endY="-67.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="267.66668701171875" startY="-51.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line93" endX="293.66668701171875" endY="-61.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="275.0" startY="-67.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line94" endX="293.0" endY="-61.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="284.33331298828125" startY="-45.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line95" endX="299.0" endY="-125.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="322.33331298828125" startY="-83.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line96" endX="320.33331298828125" endY="-82.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="313.0" startY="-54.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line97" endX="313.0" endY="-53.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="295.66668701171875" startY="-60.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line98" endX="243.66668701171875" endY="-125.66667175292969" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="289.66668701171875" startY="-107.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line99" endX="311.0" endY="-53.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="296.33331298828125" startY="-15.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line100" endX="296.33331298828125" endY="-15.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="281.0" startY="22.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line101" endX="267.66668701171875" endY="61.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="281.0" startY="23.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line102" endX="281.66668701171875" endY="21.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="320.33331298828125" startY="39.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line103" endX="320.33331298828125" endY="40.333343505859375" layoutX="-1.0" layoutY="367.0" onMouseClicked="#clickLine" startX="305.66668701171875" startY="75.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line104" endX="303.66668701171875" endY="76.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="268.33331298828125" startY="62.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line105" endX="267.66668701171875" endY="62.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="250.33331298828125" startY="100.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line106" endX="250.33331298828125" endY="101.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="207.0" startY="88.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line110" endX="290.33331298828125" endY="112.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="250.33331298828125" startY="102.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line111" endX="305.0" endY="77.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="291.0" startY="113.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line113" endX="194.33331298828125" endY="124.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="182.33331298828125" startY="119.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line114" endX="200.33331298828125" endY="107.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="194.33331298828125" startY="123.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line115" endX="221.66668701171875" endY="135.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="195.0" startY="125.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line116" endX="226.33331298828125" endY="122.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="221.66668701171875" startY="133.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line117" endX="236.33331298828125" endY="140.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="221.66668701171875" startY="133.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line118" endX="236.33331298828125" endY="141.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="211.66668701171875" startY="221.66668701171875" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line119" endX="194.33331298828125" endY="125.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="181.66668701171875" startY="165.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line120" endX="181.0" endY="166.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="172.33331298828125" startY="201.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line121" endX="248.33331298828125" endY="103.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="237.66668701171875" startY="139.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line122" endX="270.33331298828125" endY="149.66668701171875" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="239.0" startY="140.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line123" endX="270.33331298828125" endY="151.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="270.33331298828125" startY="165.66668701171875" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line124" endX="336.33331298828125" endY="1.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="298.33331298828125" startY="-15.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line125" endX="337.66668701171875" endY="3.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="321.0" startY="39.5" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line127" endX="377.66668701171875" endY="14.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="336.33331298828125" startY="2.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line128" endX="323.0" endY="-81.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="380.33331298828125" startY="13.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line129" endX="379.66668701171875" endY="15.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="367.66668701171875" startY="29.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line130" endX="367.0" endY="31.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="359.0" startY="53.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line131" endX="357.66668701171875" endY="55.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="323.0" startY="40.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line132" endX="342.33331298828125" endY="91.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="307.0" startY="77.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line133" endX="357.66668701171875" endY="55.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="343.0" startY="89.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line134" endX="342.33331298828125" endY="92.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="327.0" startY="132.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line135" endX="325.66668701171875" endY="133.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="305.66668701171875" startY="182.33331298828125" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line136" endX="305.0" endY="181.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="272.33331298828125" startY="166.33331298828125" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line137" endX="211.66668701171875" endY="222.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="173.0" startY="202.33331298828125" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line138" endX="271.66668701171875" endY="165.66668701171875" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="262.33331298828125" startY="244.33331298828125" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line139" endX="281.0" endY="250.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="305.0" startY="181.66668701171875" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line140" endX="212.33331298828125" endY="222.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="261.0" startY="243.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line70" endX="278.33331298828125" endY="-85.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="273.66668701171875" startY="-69.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line71" endX="233.0" endY="-85.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="274.33331298828125" startY="-68.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line72" endX="218.33331298828125" endY="-47.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="205.66668701171875" startY="-9.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line73" endX="169.0" endY="-27.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="205.0" startY="-9.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line74" endX="205.0" endY="-9.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="193.66668701171875" startY="27.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line75" endX="225.66668701171875" endY="-3.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="205.66668701171875" startY="-9.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line76" endX="227.0" endY="-3.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="209.0" startY="33.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line77" endX="208.33331298828125" endY="33.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="193.66668701171875" startY="28.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line78" endX="243.66668701171875" endY="5.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="227.0" startY="-3.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line79" endX="221.66668701171875" endY="40.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="207.0" startY="33.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line80" endX="222.33331298828125" endY="40.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="207.0" startY="87.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line81" endX="163.66668701171875" endY="111.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="182.33331298828125" startY="117.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line82" endX="189.0" endY="101.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="182.33331298828125" startY="117.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line83" endX="202.33331298828125" endY="104.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="189.0" startY="100.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line84" endX="200.33331298828125" endY="105.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="207.0" startY="89.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line85" endX="222.33331298828125" endY="40.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="267.0" startY="61.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line86" endX="281.66668701171875" endY="21.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="245.66668701171875" startY="5.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line87" endX="259.0" endY="-33.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="245.0" startY="5.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line88" endX="268.33331298828125" endY="-49.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="259.66668701171875" startY="-33.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line89" endX="218.33331298828125" endY="-48.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="258.33331298828125" startY="-32.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line90" endX="259.66668701171875" endY="-33.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="295.66668701171875" startY="-15.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line54" endX="244.33331298828125" endY="-124.33332824707031" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="232.33331298828125" startY="-84.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line55" endX="231.66668701171875" endY="-85.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="218.33331298828125" startY="-49.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line56" endX="206.0" endY="-187.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="165.0" startY="-167.6666717529297" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line57" endX="186.33331298828125" endY="-222.3333282470703" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="207.0" startY="-187.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line58" endX="207.66668701171875" endY="-187.6666717529297" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="247.66668701171875" startY="-205.6666717529297" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line59" endX="205.66668701171875" endY="-187.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="201.66668701171875" startY="-140.3333282470703" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line60" endX="202.33331298828125" endY="-141.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="243.66668701171875" startY="-127.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line61" endX="265.0" endY="-178.3333282470703" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="244.33331298828125" startY="-125.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line63" endX="250.33331298828125" endY="-204.3333282470703" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="265.0" startY="-177.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line64" endX="265.0" endY="-174.3333282470703" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="298.33331298828125" startY="-125.66667175292969" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line65" endX="299.0" endY="-125.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="288.33331298828125" startY="-107.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line66" endX="278.5" endY="-85.5" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="288.33331298828125" startY="-105.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line22" endX="193.66668701171875" endY="29.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="175.0" startY="75.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line23" endX="133.66668701171875" endY="61.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="175.0" startY="76.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line24" endX="175.0" endY="77.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="163.66668701171875" startY="113.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line25" endX="156.33331298828125" endY="134.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="163.66668701171875" startY="113.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line26" endX="99.66668701171875" endY="128.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="181.0" startY="165.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line27" endX="111.0" endY="-3.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="129.0" startY="-39.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line28" endX="130.33331298828125" endY="-43.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="170.33331298828125" startY="-25.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line29" endX="170.33331298828125" endY="-27.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="151.66668701171875" startY="11.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line30" endX="99.66668701171875" endY="-79.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="86.33334350585938" startY="-62.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line31" endX="99.66668701171875" endY="-77.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="139.66668701171875" startY="-67.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line32" endX="139.0" endY="-67.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="129.66668701171875" startY="-43.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line33" endX="100.33331298828125" endY="-78.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="130.33331298828125" startY="-147.6666717529297" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line34" endX="132.33331298828125" endY="-175.6666717529297" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="130.0" startY="-147.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line35" endX="125.66668701171875" endY="-212.3333282470703" layoutX="87.0" layoutY="378.0" onMouseClicked="#clickLine" startX="121.0" startY="-186.3333282470703" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line36" endX="138.33331298828125" endY="-227.6666717529297" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="133.66668701171875" startY="-203.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line37" endX="149.66668701171875" endY="-270.3333435058594" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="138.33331298828125" startY="-229.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line38" endX="159.0" endY="-295.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="149.66668701171875" startY="-271.6666564941406" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line39" endX="177.66668701171875" endY="-309.6666564941406" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="159.66668701171875" startY="-297.6666564941406" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line40" endX="192.33331298828125" endY="-319.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="178.33331298828125" startY="-311.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line41" endX="193.0" endY="-319.6666564941406" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="247.66668701171875" startY="-208.3333282470703" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line42" endX="187.0" endY="-223.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="136.33331298828125" startY="-203.6666717529297" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line43" endX="151.0" endY="-271.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="186.33331298828125" startY="-224.3333282470703" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line44" endX="164.33331298828125" endY="-169.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="133.0" startY="-176.3333282470703" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line45" endX="164.33331298828125" endY="-167.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="177.66668701171875" startY="-107.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line46" endX="178.33331298828125" endY="-106.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="178.33331298828125" startY="-60.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line47" endX="139.66668701171875" endY="-68.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="179.0" startY="-60.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line48" endX="178.33331298828125" endY="-61.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="169.66668701171875" startY="-29.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line49" endX="207.0" endY="-98.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="191.66668701171875" startY="-56.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line50" endX="191.66668701171875" endY="-55.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="179.0" startY="-60.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line51" endX="207.0" endY="-99.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="179.66668701171875" startY="-107.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line52" endX="231.66668701171875" endY="-85.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="208.33331298828125" startY="-97.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line53" endX="217.0" endY="-49.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="193.0" startY="-55.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line" endX="42.333343505859375" endY="11.0" layoutX="67.0" layoutY="358.0" onMouseClicked="#clickLine" startX="17.0" startY="40.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line1" endX="45.666656494140625" endY="11.666656494140625" layoutX="39.0" layoutY="386.0" onMouseClicked="#clickLine" startX="-5.0" startY="63.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line16" endX="124.33331298828125" endY="1.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="110.33331298828125" startY="-4.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line3" endX="65.66665649414062" endY="29.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="34.333343505859375" startY="1.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line4" endX="57.666656494140625" endY="-27.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="33.0" startY="1.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line5" endX="65.66665649414062" endY="29.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="49.0" startY="60.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line6" endX="65.66665649414062" endY="28.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="104.33331298828125" startY="48.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line7" endX="80.33334350585938" endY="91.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="104.33331298828125" startY="50.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line8" endX="99.66668701171875" endY="127.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="17.0" startY="90.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line9" endX="118.33331298828125" endY="83.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="100.33331298828125" startY="127.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line10" endX="105.66668701171875" endY="76.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="117.0" startY="83.66665649414062" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line11" endX="133.0" endY="59.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="117.66668701171875" startY="84.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line12" endX="105.66668701171875" endY="49.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="131.66668701171875" startY="59.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line13" endX="109.66668701171875" endY="-5.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="59.0" startY="-27.666656494140625" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line14" endX="87.0" endY="-61.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="57.666656494140625" startY="-27.0" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line15" endX="129.66668701171875" endY="-41.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="86.33334350585938" startY="-60.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line17" endX="151.66668701171875" endY="12.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="123.0" startY="2.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line18" endX="125.0" endY="2.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="104.33331298828125" startY="48.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line19" endX="173.0" endY="202.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="-41.666656494140625" startY="82.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line20" endX="151.66668701171875" endY="12.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="133.0" startY="60.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line21" endX="151.66668701171875" endY="11.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="193.66668701171875" startY="30.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line112" endX="270.33331298828125" endY="149.66668701171875" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="289.66668701171875" startY="114.33334350585938" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line2" endX="5.666656494140625" endY="31.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="33.0" startY="48.333343505859375" stroke="#9dff70" strokeWidth="7.0" />
-            <Line fx:id="line141" endX="280.33331298828125" endY="250.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="263.0" startY="243.66668701171875" stroke="#9dff70" strokeWidth="7.0" />
-            <Circle fx:id="point" fill="DODGERBLUE" layoutX="215.0" layoutY="301.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point1" fill="DODGERBLUE" layoutX="176.0" layoutY="290.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point2" fill="DODGERBLUE" layoutX="163.0" layoutY="308.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point3" fill="DODGERBLUE" layoutX="206.0" layoutY="327.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point4" fill="DODGERBLUE" layoutX="135.0" layoutY="341.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point5" fill="DODGERBLUE" layoutX="256.0" layoutY="307.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point6" fill="DODGERBLUE" layoutX="247.0" layoutY="341.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point7" fill="DODGERBLUE" layoutX="269.0" layoutY="313.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point8" fill="DODGERBLUE" layoutX="187.0" layoutY="364.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point9" fill="DODGERBLUE" layoutX="200.0" layoutY="371.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point10" fill="DODGERBLUE" layoutX="255.0" layoutY="261.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point11" fill="DODGERBLUE" layoutX="284.0" layoutY="270.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point12" fill="DODGERBLUE" layoutX="110.0" layoutY="370.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point13" fill="DODGERBLUE" layoutX="142.0" layoutY="397.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point15" fill="DODGERBLUE" layoutX="110.0" layoutY="416.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point16" fill="DODGERBLUE" layoutX="126.0" layoutY="428.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point17" fill="DODGERBLUE" layoutX="228.0" layoutY="380.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point18" fill="DODGERBLUE" layoutX="207.0" layoutY="221.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point19" fill="DODGERBLUE" layoutX="309.0" layoutY="284.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point20" fill="DODGERBLUE" layoutX="181.0" layoutY="417.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point21" fill="DODGERBLUE" layoutX="209.0" layoutY="428.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point22" fill="DODGERBLUE" layoutX="270.0" layoutY="397.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point23" fill="DODGERBLUE" layoutX="285.0" layoutY="402.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point24" fill="DODGERBLUE" layoutX="209.0" layoutY="194.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point25" fill="DODGERBLUE" layoutX="251.0" layoutY="444.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point26" fill="DODGERBLUE" layoutX="241.0" layoutY="201.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point27" fill="DODGERBLUE" layoutX="212.0" layoutY="166.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point28" fill="DODGERBLUE" layoutX="215.0" layoutY="140.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point29" fill="DODGERBLUE" layoutX="227.0" layoutY="98.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point30" fill="DODGERBLUE" layoutX="264.0" layoutY="146.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point31" fill="DODGERBLUE" layoutX="283.0" layoutY="181.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point32" fill="DODGERBLUE" layoutX="235.0" layoutY="73.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point33" fill="DODGERBLUE" layoutX="254.0" layoutY="59.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point34" fill="DODGERBLUE" layoutX="269.0" layoutY="50.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point35" fill="DODGERBLUE" layoutX="279.0" layoutY="228.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point36" fill="DODGERBLUE" layoutX="321.0" layoutY="244.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point37" fill="DODGERBLUE" layoutX="326.0" layoutY="160.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point38" fill="DODGERBLUE" layoutX="342.0" layoutY="194.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point39" fill="DODGERBLUE" layoutX="294.0" layoutY="320.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point40" fill="DODGERBLUE" layoutX="283.0" layoutY="358.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point41" fill="DODGERBLUE" layoutX="303.0" layoutY="364.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point42" fill="DODGERBLUE" layoutX="298.0" layoutY="410.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point43" fill="DODGERBLUE" layoutX="352.0" layoutY="301.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point44" fill="DODGERBLUE" layoutX="367.0" layoutY="261.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point45" fill="DODGERBLUE" layoutX="376.0" layoutY="244.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point46" fill="DODGERBLUE" layoutX="345.0" layoutY="319.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point47" fill="DODGERBLUE" layoutX="370.0" layoutY="307.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point48" fill="DODGERBLUE" layoutX="361.0" layoutY="322.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point49" fill="DODGERBLUE" layoutX="398.0" layoutY="285.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point50" fill="DODGERBLUE" layoutX="336.0" layoutY="335.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point51" fill="DODGERBLUE" layoutX="321.0" layoutY="374.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point52" fill="DODGERBLUE" layoutX="390.0" layoutY="314.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point53" fill="DODGERBLUE" layoutX="373.0" layoutY="352.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point54" fill="DODGERBLUE" layoutX="157.0" layoutY="458.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point55" fill="DODGERBLUE" layoutX="414.0" layoutY="370.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point56" fill="DODGERBLUE" layoutX="194.0" layoutY="452.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point57" fill="DODGERBLUE" layoutX="182.0" layoutY="445.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point58" fill="DODGERBLUE" layoutX="94.0" layoutY="459.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point59" fill="DODGERBLUE" layoutX="34.0" layoutY="449.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point60" fill="DODGERBLUE" layoutX="249.0" layoutY="569.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point61" fill="DODGERBLUE" layoutX="258.0" layoutY="533.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point62" fill="DODGERBLUE" layoutX="176.0" layoutY="496.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point63" fill="DODGERBLUE" layoutX="233.0" layoutY="502.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point64" fill="DODGERBLUE" layoutX="240.0" layoutY="480.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point65" fill="DODGERBLUE" layoutX="259.0" layoutY="486.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point66" fill="DODGERBLUE" layoutX="265.0" layoutY="469.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point67" fill="DODGERBLUE" layoutX="284.0" layoutY="455.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point68" fill="DODGERBLUE" layoutX="327.0" layoutY="469.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point69" fill="DODGERBLUE" layoutX="345.0" layoutY="429.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point70" fill="DODGERBLUE" layoutX="358.0" layoutY="391.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point71" fill="DODGERBLUE" layoutX="398.0" layoutY="408.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point74" fill="DODGERBLUE" layoutX="436.0" layoutY="422.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point75" fill="DODGERBLUE" layoutX="445.0" layoutY="398.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point77" fill="DODGERBLUE" layoutX="420.0" layoutY="459.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point78" fill="DODGERBLUE" layoutX="382.0" layoutY="445.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point79" fill="DODGERBLUE" layoutX="367.0" layoutY="480.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point80" fill="DODGERBLUE" layoutX="271.0" layoutY="492.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point81" fill="DODGERBLUE" layoutX="315.0" layoutY="508.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point82" fill="DODGERBLUE" layoutX="298.0" layoutY="502.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point83" fill="DODGERBLUE" layoutX="304.0" layoutY="491.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point84" fill="DODGERBLUE" layoutX="278.0" layoutY="473.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point88" fill="DODGERBLUE" layoutX="403.0" layoutY="501.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point89" fill="DODGERBLUE" layoutX="348.0" layoutY="518.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point90" fill="DODGERBLUE" layoutX="349.0" layoutY="533.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point91" fill="DODGERBLUE" layoutX="383.0" layoutY="550.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point93" fill="DODGERBLUE" layoutX="289.0" layoutY="590.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point94" fill="DODGERBLUE" layoutX="339.0" layoutY="612.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point95" fill="DODGERBLUE" layoutX="358.0" layoutY="618.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point97" fill="DODGERBLUE" layoutX="355.0" layoutY="282.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point73" fill="DODGERBLUE" layoutX="456.0" layoutY="381.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="point14" fill="DODGERBLUE" layoutX="84.0" layoutY="398.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+            <Line fx:id="l85" endX="268.33331298828125" endY="-51.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="284.33331298828125" startY="-45.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l86" endX="275.0" endY="-67.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="267.66668701171875" startY="-51.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l81" endX="293.66668701171875" endY="-61.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="275.0" startY="-67.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l84" endX="293.0" endY="-61.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="284.33331298828125" startY="-45.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l24" endX="299.0" endY="-125.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="322.33331298828125" startY="-83.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l83" endX="320.33331298828125" endY="-82.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="313.0" startY="-54.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l82" endX="313.0" endY="-53.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="295.66668701171875" startY="-60.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l77" endX="243.66668701171875" endY="-125.66667175292969" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="289.66668701171875" startY="-107.66665649414062" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l90" endX="311.0" endY="-53.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="296.33331298828125" startY="-15.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l94" endX="296.33331298828125" endY="-15.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="281.0" startY="22.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l102" endX="267.66668701171875" endY="61.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="281.0" startY="23.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l99" endX="281.66668701171875" endY="21.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="320.33331298828125" startY="39.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l107" endX="303.66668701171875" endY="76.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="268.33331298828125" startY="62.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l110" endX="267.66668701171875" endY="62.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="250.33331298828125" startY="100.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l112" endX="250.33331298828125" endY="101.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="207.0" startY="88.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l113" endX="290.33331298828125" endY="112.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="250.33331298828125" startY="102.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l111" endX="305.0" endY="77.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="291.0" startY="113.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l117" endX="194.33331298828125" endY="124.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="164.0" startY="113.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l114" endX="208.0" endY="87.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="194.33331298828125" startY="123.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l118" endX="236.33331298828125" endY="140.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="195.0" startY="126.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l121" endX="236.33331298828125" endY="141.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="211.66668701171875" startY="221.66668701171875" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l120" endX="194.33331298828125" endY="125.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="181.66668701171875" startY="165.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l125" endX="181.0" endY="166.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="172.33331298828125" startY="201.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l115" endX="248.33331298828125" endY="103.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="237.66668701171875" startY="139.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l119" endX="270.33331298828125" endY="149.66668701171875" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="239.0" startY="140.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l122" endX="270.33331298828125" endY="151.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="270.33331298828125" startY="165.66668701171875" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l91" endX="336.33331298828125" endY="1.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="298.33331298828125" startY="-15.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l95" endX="337.66668701171875" endY="3.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="321.0" startY="39.5" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l92" endX="377.66668701171875" endY="14.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="336.33331298828125" startY="2.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="line128" endX="323.0" endY="-81.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="380.33331298828125" startY="13.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l22" endX="379.66668701171875" endY="15.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="367.66668701171875" startY="29.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l21" endX="367.0" endY="31.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="359.0" startY="53.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l100" endX="357.66668701171875" endY="55.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="323.0" startY="40.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l108" endX="342.33331298828125" endY="91.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="307.0" startY="77.66665649414062" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l20" endX="357.66668701171875" endY="55.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="343.0" startY="89.66665649414062" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l19" endX="342.33331298828125" endY="92.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="327.0" startY="132.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l18" endX="325.66668701171875" endY="133.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="305.66668701171875" startY="182.33331298828125" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l123" endX="305.0" endY="181.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="272.33331298828125" startY="166.33331298828125" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l14" endX="211.66668701171875" endY="222.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="173.0" startY="202.33331298828125" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l124" endX="271.66668701171875" endY="165.66668701171875" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="262.33331298828125" startY="244.33331298828125" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l17" endX="281.0" endY="250.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="305.0" startY="181.66668701171875" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l15" endX="212.33331298828125" endY="222.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="261.0" startY="243.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l80" endX="233.0" endY="-85.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="274.33331298828125" startY="-68.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l56" endX="218.33331298828125" endY="-47.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="205.66668701171875" startY="-9.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l69" endX="169.0" endY="-27.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="205.0" startY="-9.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l57" endX="205.0" endY="-9.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="193.66668701171875" startY="27.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l96" endX="225.66668701171875" endY="-3.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="205.66668701171875" startY="-9.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l101" endX="227.0" endY="-3.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="209.0" startY="33.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l104" endX="208.33331298828125" endY="33.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="193.66668701171875" startY="28.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l97" endX="243.66668701171875" endY="5.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="227.0" startY="-3.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l105" endX="221.66668701171875" endY="40.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="207.0" startY="33.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l109" endX="222.33331298828125" endY="40.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="207.0" startY="87.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l106" endX="222.33331298828125" endY="40.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="267.0" startY="61.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l98" endX="281.66668701171875" endY="21.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="245.66668701171875" startY="5.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l93" endX="259.0" endY="-33.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="245.0" startY="5.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l87" endX="268.33331298828125" endY="-49.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="259.66668701171875" startY="-33.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l88" endX="218.33331298828125" endY="-48.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="258.33331298828125" startY="-32.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l89" endX="259.66668701171875" endY="-33.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="295.66668701171875" startY="-15.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l49" endX="244.33331298828125" endY="-124.33332824707031" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="232.33331298828125" startY="-84.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l55" endX="231.66668701171875" endY="-85.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="218.33331298828125" startY="-49.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l46" endX="206.0" endY="-187.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="165.0" startY="-167.6666717529297" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l30" endX="186.33331298828125" endY="-222.3333282470703" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="207.0" startY="-187.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l45" endX="207.66668701171875" endY="-187.6666717529297" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="247.66668701171875" startY="-205.6666717529297" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l47" endX="205.66668701171875" endY="-187.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="201.66668701171875" startY="-140.3333282470703" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l75" endX="202.33331298828125" endY="-141.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="243.66668701171875" startY="-127.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l48" endX="265.0" endY="-178.3333282470703" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="244.33331298828125" startY="-125.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l26" endX="250.33331298828125" endY="-204.3333282470703" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="265.0" startY="-177.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l25" endX="265.0" endY="-174.3333282470703" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="298.33331298828125" startY="-125.66667175292969" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l78" endX="299.0" endY="-125.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="288.33331298828125" startY="-107.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l79" endX="274.33331298828125" endY="-69.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="288.33331298828125" startY="-105.66665649414062" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l58" endX="193.66668701171875" endY="29.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="175.0" startY="75.66665649414062" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l65" endX="133.66668701171875" endY="61.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="175.0" startY="76.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l59" endX="175.0" endY="77.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="163.66668701171875" startY="113.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l60" endX="156.33331298828125" endY="134.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="163.66668701171875" startY="113.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l61" endX="99.66668701171875" endY="128.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="181.0" startY="165.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l38" endX="111.0" endY="-3.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="129.0" startY="-39.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l71" endX="130.33331298828125" endY="-43.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="170.33331298828125" startY="-25.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l68" endX="170.33331298828125" endY="-27.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="151.66668701171875" startY="11.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l8" endX="99.66668701171875" endY="-79.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="86.33334350585938" startY="-62.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l35" endX="99.66668701171875" endY="-77.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="139.66668701171875" startY="-67.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l36" endX="139.0" endY="-67.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="129.66668701171875" startY="-43.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l7" endX="100.33331298828125" endY="-78.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="130.33331298828125" startY="-147.6666717529297" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l6" endX="132.33331298828125" endY="-175.6666717529297" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="130.0" startY="-147.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l5" endX="125.66668701171875" endY="-212.3333282470703" layoutX="87.0" layoutY="378.0" onMouseClicked="#clickLine" startX="121.0" startY="-186.3333282470703" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l4" endX="138.33331298828125" endY="-227.6666717529297" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="133.66668701171875" startY="-203.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l3" endX="149.66668701171875" endY="-270.3333435058594" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="138.33331298828125" startY="-229.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l2" endX="159.0" endY="-295.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="149.66668701171875" startY="-271.6666564941406" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l1" endX="192.33331298828125" endY="-319.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="158.0" startY="-296.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l27" endX="193.0" endY="-319.6666564941406" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="247.66668701171875" startY="-208.3333282470703" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l29" endX="187.0" endY="-223.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="136.33331298828125" startY="-203.6666717529297" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l28" endX="151.0" endY="-271.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="186.33331298828125" startY="-224.3333282470703" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l31" endX="164.33331298828125" endY="-169.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="133.0" startY="-176.3333282470703" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l32" endX="164.33331298828125" endY="-167.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="177.66668701171875" startY="-107.66665649414062" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l33" endX="178.33331298828125" endY="-106.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="178.33331298828125" startY="-60.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l34" endX="139.66668701171875" endY="-68.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="179.0" startY="-60.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l70" endX="178.33331298828125" endY="-61.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="169.66668701171875" startY="-29.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l52" endX="207.0" endY="-98.33334350585938" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="191.66668701171875" startY="-56.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l53" endX="191.66668701171875" endY="-55.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="179.0" startY="-60.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l51" endX="207.0" endY="-99.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="179.66668701171875" startY="-107.66665649414062" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l50" endX="231.66668701171875" endY="-85.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="208.33331298828125" startY="-97.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l54" endX="217.0" endY="-49.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="193.0" startY="-55.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l11" endX="42.333343505859375" endY="11.0" layoutX="67.0" layoutY="358.0" onMouseClicked="#clickLine" startX="17.0" startY="40.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l12" endX="45.666656494140625" endY="11.666656494140625" layoutX="39.0" layoutY="386.0" onMouseClicked="#clickLine" startX="-5.0" startY="63.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l76" endX="124.33331298828125" endY="1.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="110.33331298828125" startY="-4.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l42" endX="65.66665649414062" endY="29.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="34.333343505859375" startY="1.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l10" endX="57.666656494140625" endY="-27.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="33.0" startY="1.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l43" endX="65.66665649414062" endY="29.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="49.0" startY="60.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l41" endX="65.66665649414062" endY="28.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="104.33331298828125" startY="48.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l74" endX="80.33334350585938" endY="91.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="104.33331298828125" startY="50.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l62" endX="99.66668701171875" endY="127.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="17.0" startY="90.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l63" endX="118.33331298828125" endY="83.66665649414062" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="100.33331298828125" startY="127.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l64" endX="133.0" endY="59.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="117.66668701171875" startY="84.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l73" endX="105.66668701171875" endY="49.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="131.66668701171875" startY="59.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l39" endX="109.66668701171875" endY="-5.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="59.0" startY="-27.666656494140625" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l9" endX="87.0" endY="-61.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="57.666656494140625" startY="-27.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l37" endX="129.66668701171875" endY="-41.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="86.33334350585938" startY="-60.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l72" endX="151.66668701171875" endY="12.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="123.0" startY="2.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l40" endX="125.0" endY="2.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="104.33331298828125" startY="48.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l13" endX="173.0" endY="202.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="-41.666656494140625" startY="82.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l66" endX="151.66668701171875" endY="12.333343505859375" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="133.0" startY="60.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l67" endX="151.66668701171875" endY="11.666656494140625" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="193.66668701171875" startY="30.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l116" endX="270.33331298828125" endY="149.66668701171875" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="289.66668701171875" startY="114.33334350585938" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l44" endX="5.666656494140625" endY="31.0" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="33.0" startY="48.333343505859375" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Line fx:id="l16" endX="280.33331298828125" endY="250.33331298828125" layoutX="77.0" layoutY="368.0" onMouseClicked="#clickLine" startX="263.0" startY="243.66668701171875" stroke="#9dff70" strokeWidth="7.0" visible="false" />
+            <Circle fx:id="v33" fill="DODGERBLUE" layoutX="215.0" layoutY="301.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v8" fill="DODGERBLUE" layoutX="176.0" layoutY="290.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v9" fill="DODGERBLUE" layoutX="163.0" layoutY="308.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v34" fill="DODGERBLUE" layoutX="206.0" layoutY="327.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v10" fill="DODGERBLUE" layoutX="135.0" layoutY="341.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v46" fill="DODGERBLUE" layoutX="256.0" layoutY="307.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v48" fill="DODGERBLUE" layoutX="247.0" layoutY="341.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v45" fill="DODGERBLUE" layoutX="269.0" layoutY="313.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v35" fill="DODGERBLUE" layoutX="187.0" layoutY="364.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v36" fill="DODGERBLUE" layoutX="200.0" layoutY="371.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v32" fill="DODGERBLUE" layoutX="255.0" layoutY="261.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v43" fill="DODGERBLUE" layoutX="284.0" layoutY="270.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v11" fill="DODGERBLUE" layoutX="110.0" layoutY="370.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v37" fill="DODGERBLUE" layoutX="142.0" layoutY="397.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v39" fill="DODGERBLUE" layoutX="110.0" layoutY="416.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v38" fill="DODGERBLUE" layoutX="126.0" layoutY="428.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v49" fill="DODGERBLUE" layoutX="228.0" layoutY="380.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v7" fill="DODGERBLUE" layoutX="207.0" layoutY="221.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v42" fill="DODGERBLUE" layoutX="309.0" layoutY="284.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v54" fill="DODGERBLUE" layoutX="181.0" layoutY="417.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v50" fill="DODGERBLUE" layoutX="209.0" layoutY="428.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v65" fill="DODGERBLUE" layoutX="270.0" layoutY="397.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v64" fill="DODGERBLUE" layoutX="285.0" layoutY="402.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v6" fill="DODGERBLUE" layoutX="209.0" layoutY="194.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v66" fill="DODGERBLUE" layoutX="251.0" layoutY="444.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v30" fill="DODGERBLUE" layoutX="241.0" layoutY="201.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v5" fill="DODGERBLUE" layoutX="212.0" layoutY="166.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v4" fill="DODGERBLUE" layoutX="215.0" layoutY="140.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v3" fill="DODGERBLUE" layoutX="227.0" layoutY="98.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v29" fill="DODGERBLUE" layoutX="264.0" layoutY="146.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v28" fill="DODGERBLUE" layoutX="283.0" layoutY="181.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v2" fill="DODGERBLUE" layoutX="235.0" layoutY="73.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v1" fill="DODGERBLUE" layoutX="269.0" layoutY="50.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v31" fill="DODGERBLUE" layoutX="279.0" layoutY="228.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v41" fill="DODGERBLUE" layoutX="321.0" layoutY="244.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v27" fill="DODGERBLUE" layoutX="326.0" layoutY="160.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v26" fill="DODGERBLUE" layoutX="342.0" layoutY="194.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v44" fill="DODGERBLUE" layoutX="294.0" layoutY="320.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v47" fill="DODGERBLUE" layoutX="283.0" layoutY="358.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v63" fill="DODGERBLUE" layoutX="303.0" layoutY="364.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v72" fill="DODGERBLUE" layoutX="298.0" layoutY="410.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v57" fill="DODGERBLUE" layoutX="352.0" layoutY="301.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v55" fill="DODGERBLUE" layoutX="367.0" layoutY="261.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v25" fill="DODGERBLUE" layoutX="376.0" layoutY="244.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v60" fill="DODGERBLUE" layoutX="345.0" layoutY="319.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v58" fill="DODGERBLUE" layoutX="370.0" layoutY="307.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v59" fill="DODGERBLUE" layoutX="361.0" layoutY="322.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v24" fill="DODGERBLUE" layoutX="398.0" layoutY="285.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v61" fill="DODGERBLUE" layoutX="336.0" layoutY="335.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v62" fill="DODGERBLUE" layoutX="321.0" layoutY="374.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v73" fill="DODGERBLUE" layoutX="390.0" layoutY="314.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v84" fill="DODGERBLUE" layoutX="373.0" layoutY="352.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v53" fill="DODGERBLUE" layoutX="157.0" layoutY="458.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v83" fill="DODGERBLUE" layoutX="414.0" layoutY="370.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v51" fill="DODGERBLUE" layoutX="194.0" layoutY="452.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v40" fill="DODGERBLUE" layoutX="94.0" layoutY="459.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v13" fill="DODGERBLUE" layoutX="34.0" layoutY="449.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v14" fill="DODGERBLUE" layoutX="249.0" layoutY="569.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v69" fill="DODGERBLUE" layoutX="258.0" layoutY="533.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v52" fill="DODGERBLUE" layoutX="176.0" layoutY="496.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v68" fill="DODGERBLUE" layoutX="233.0" layoutY="502.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v67" fill="DODGERBLUE" layoutX="240.0" layoutY="480.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v71" fill="DODGERBLUE" layoutX="284.0" layoutY="455.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v76" fill="DODGERBLUE" layoutX="327.0" layoutY="469.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v75" fill="DODGERBLUE" layoutX="345.0" layoutY="429.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v74" fill="DODGERBLUE" layoutX="358.0" layoutY="391.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v82" fill="DODGERBLUE" layoutX="398.0" layoutY="408.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v21" fill="DODGERBLUE" layoutX="436.0" layoutY="422.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v22" fill="DODGERBLUE" layoutX="445.0" layoutY="398.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v20" fill="DODGERBLUE" layoutX="420.0" layoutY="459.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v81" fill="DODGERBLUE" layoutX="382.0" layoutY="445.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v80" fill="DODGERBLUE" layoutX="367.0" layoutY="480.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v70" fill="DODGERBLUE" layoutX="271.0" layoutY="492.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v77" fill="DODGERBLUE" layoutX="315.0" layoutY="508.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v19" fill="DODGERBLUE" layoutX="403.0" layoutY="501.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v79" fill="DODGERBLUE" layoutX="348.0" layoutY="518.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v78" fill="DODGERBLUE" layoutX="349.0" layoutY="533.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v18" fill="DODGERBLUE" layoutX="383.0" layoutY="550.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v15" fill="DODGERBLUE" layoutX="289.0" layoutY="590.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v16" fill="DODGERBLUE" layoutX="339.0" layoutY="612.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v17" fill="DODGERBLUE" layoutX="358.0" layoutY="618.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v56" fill="DODGERBLUE" layoutX="355.0" layoutY="282.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v23" fill="DODGERBLUE" layoutX="456.0" layoutY="381.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="v12" fill="DODGERBLUE" layoutX="84.0" layoutY="398.0" onMouseClicked="#clickCircle" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Line fx:id="l103" endX="311.0" endY="31.0" layoutX="83.0" layoutY="385.0" onMouseClicked="#clickLine" startX="298.0" startY="57.0" stroke="#9dff70" strokeWidth="7.0" visible="false" />
          </children></AnchorPane>
    </items>
 </SplitPane>
