@@ -27,8 +27,6 @@ public class WazeController implements Initializable {
     @FXML
     private ImageView mapa;
     @FXML
-    private Line line128;
-    @FXML
     private CheckBox btnlineas;
     @FXML
     private CheckBox btnVerices;
@@ -448,13 +446,17 @@ public class WazeController implements Initializable {
     private Line l103;
     @FXML
     private Line l125;
+    @FXML
+    private Line l126;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        btnlineas.setSelected(true);
+        btnVerices.setSelected(true);
+        
     }    
 
     @FXML
@@ -599,6 +601,8 @@ public class WazeController implements Initializable {
             l123.setVisible(true);
             l124.setVisible(true);
             l125.setVisible(true);
+            l126.setVisible(true);
+            
         }else{
             l1.setVisible(false);
             l1.setVisible(false);
@@ -725,6 +729,7 @@ public class WazeController implements Initializable {
             l123.setVisible(false);
             l124.setVisible(false);
             l125.setVisible(false);
+            l126.setVisible(false);
         }
         
     }
