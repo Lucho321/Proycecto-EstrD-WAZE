@@ -6,11 +6,15 @@
 package waze;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -24,6 +28,7 @@ import javafx.scene.shape.Line;
  */
 public class WazeController implements Initializable {
 
+    
     @FXML
     private ImageView mapa;
     @FXML
@@ -448,6 +453,19 @@ public class WazeController implements Initializable {
     private Line l103;
     @FXML
     private Line l125;
+    @FXML
+    private Button btnChoque;
+    @FXML
+    private ImageView imgFondo;
+    @FXML
+    private Button btnTrafico;
+    @FXML
+    private Button btnCerrarCalle;
+    
+    
+
+    private List<Object> lineasSeleccionadas = new ArrayList<Object>();
+    private List<Object> verticesSeleccionados = new ArrayList<Object>();
 
     /**
      * Initializes the controller class.
@@ -455,462 +473,272 @@ public class WazeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Image image = new Image(getClass().getResourceAsStream("/imagenes/choque.png"));
+        ImageView imgView = new ImageView(image);
+        imgView.setFitHeight(50);
+        imgView.setFitWidth(50);
+        btnChoque.setGraphic(imgView);
+        
+        image = new Image(getClass().getResourceAsStream("/imagenes/trafico.png"));
+        imgView = new ImageView(image);
+        imgView.setFitHeight(50);
+        imgView.setFitWidth(50);
+        btnTrafico.setGraphic(imgView);
+        
+        image = new Image(getClass().getResourceAsStream("/imagenes/calleCerrada.png"));
+        imgView = new ImageView(image);
+        imgView.setFitHeight(50);
+        imgView.setFitWidth(50);
+        btnCerrarCalle.setGraphic(imgView);
+        
+        btnlineas.setSelected(true);
+        btnVerices.setSelected(true);
+        setLineasVisible();
+        setVerticesVisible();
     }    
 
     @FXML
     private void clickLine(MouseEvent event) {
         Line l = (Line)(event.getSource());
-        l.setStroke(Color.RED);
+        l.setStroke(Color.ORANGE);
+        lineasSeleccionadas.add(l);
     }
-    
-
     @FXML
     private void clickCircle(MouseEvent event) {
         Circle c = (Circle)event.getSource();
-        c.setFill(Color.RED);
-       
+        c.setFill(Color.ORANGE);
+        verticesSeleccionados.add(c);
     }
-
     @FXML
     private void actLineas(ActionEvent event) {
-        if(btnlineas.isSelected()){
-            l1.setVisible(true);
-            l1.setVisible(true);
-            l2.setVisible(true);
-            l3.setVisible(true);
-            l4.setVisible(true);
-            l5.setVisible(true);
-            l6.setVisible(true);
-            l7.setVisible(true);
-            l8.setVisible(true);
-            l9.setVisible(true);
-            l10.setVisible(true);
-            l11.setVisible(true);
-            l12.setVisible(true);
-            l13.setVisible(true);
-            l14.setVisible(true);
-            l15.setVisible(true);
-            l16.setVisible(true);
-            l17.setVisible(true);
-            l18.setVisible(true);
-            l19.setVisible(true);
-            l20.setVisible(true);
-            l21.setVisible(true);
-            l22.setVisible(true);
-            l24.setVisible(true);
-            l25.setVisible(true);
-            l26.setVisible(true);
-            l27.setVisible(true);
-            l28.setVisible(true);
-            l29.setVisible(true);
-            l30.setVisible(true);
-            l31.setVisible(true);
-            l32.setVisible(true);
-            l33.setVisible(true);
-            l34.setVisible(true);
-            l35.setVisible(true);
-            l36.setVisible(true);
-            l37.setVisible(true);
-            l38.setVisible(true);
-            l39.setVisible(true);
-            l40.setVisible(true);
-            l41.setVisible(true);
-            l42.setVisible(true);
-            l43.setVisible(true);
-            l44.setVisible(true);
-            l45.setVisible(true);
-            l46.setVisible(true);
-            l47.setVisible(true);
-            l48.setVisible(true);
-            l49.setVisible(true);
-            l50.setVisible(true);
-            l51.setVisible(true);
-            l52.setVisible(true);
-            l53.setVisible(true);
-            l54.setVisible(true);
-            l55.setVisible(true);
-            l56.setVisible(true);
-            l57.setVisible(true);
-            l58.setVisible(true);
-            l59.setVisible(true);
-            l60.setVisible(true);
-            l61.setVisible(true);
-            l62.setVisible(true);
-            l63.setVisible(true);
-            l64.setVisible(true);
-            l65.setVisible(true);
-            l66.setVisible(true);
-            l67.setVisible(true);
-            l68.setVisible(true);
-            l69.setVisible(true);
-            l70.setVisible(true);
-            l71.setVisible(true);
-            l72.setVisible(true);
-            l73.setVisible(true);
-            l74.setVisible(true);
-            l75.setVisible(true);
-            l76.setVisible(true);
-            l77.setVisible(true);
-            l78.setVisible(true);
-            l79.setVisible(true);
-            l80.setVisible(true);
-            l81.setVisible(true);
-            l82.setVisible(true);
-            l83.setVisible(true);
-            l84.setVisible(true);
-            l85.setVisible(true);
-            l86.setVisible(true);
-            l87.setVisible(true);
-            l88.setVisible(true);
-            l89.setVisible(true);
-            l90.setVisible(true);
-            l91.setVisible(true);
-            l92.setVisible(true);
-            l93.setVisible(true);
-            l94.setVisible(true);
-            l95.setVisible(true);
-            l96.setVisible(true);
-            l97.setVisible(true);
-            l98.setVisible(true);
-            l99.setVisible(true);
-            l100.setVisible(true);
-            l101.setVisible(true);
-            l102.setVisible(true);
-            l103.setVisible(true);
-            l104.setVisible(true);
-            l105.setVisible(true);
-            l106.setVisible(true);
-            l107.setVisible(true);
-            l108.setVisible(true);
-            l109.setVisible(true);
-            l110.setVisible(true);
-            l111.setVisible(true);
-            l112.setVisible(true);
-            l113.setVisible(true);
-            l114.setVisible(true);
-            l115.setVisible(true);
-            l116.setVisible(true);
-            l117.setVisible(true);
-            l118.setVisible(true);
-            l119.setVisible(true);
-            l120.setVisible(true);
-            l121.setVisible(true);
-            l122.setVisible(true);
-            l123.setVisible(true);
-            l124.setVisible(true);
-            l125.setVisible(true);
-        }else{
-            l1.setVisible(false);
-            l1.setVisible(false);
-            l2.setVisible(false);
-            l3.setVisible(false);
-            l4.setVisible(false);
-            l5.setVisible(false);
-            l6.setVisible(false);
-            l7.setVisible(false);
-            l8.setVisible(false);
-            l9.setVisible(false);
-            l10.setVisible(false);
-            l11.setVisible(false);
-            l12.setVisible(false);
-            l13.setVisible(false);
-            l14.setVisible(false);
-            l15.setVisible(false);
-            l16.setVisible(false);
-            l17.setVisible(false);
-            l18.setVisible(false);
-            l19.setVisible(false);
-            l20.setVisible(false);
-            l21.setVisible(false);
-            l22.setVisible(false);
-            l24.setVisible(false);
-            l25.setVisible(false);
-            l26.setVisible(false);
-            l27.setVisible(false);
-            l28.setVisible(false);
-            l29.setVisible(false);
-            l30.setVisible(false);  
-            l31.setVisible(false);
-            l32.setVisible(false);
-            l33.setVisible(false);
-            l34.setVisible(false);
-            l35.setVisible(false);
-            l36.setVisible(false);
-            l37.setVisible(false);
-            l38.setVisible(false);
-            l39.setVisible(false);
-            l40.setVisible(false);
-            l41.setVisible(false);
-            l42.setVisible(false);
-            l43.setVisible(false);
-            l44.setVisible(false);
-            l45.setVisible(false);
-            l46.setVisible(false);
-            l47.setVisible(false);
-            l48.setVisible(false);
-            l49.setVisible(false);
-            l50.setVisible(false);
-            l51.setVisible(false);
-            l52.setVisible(false);
-            l53.setVisible(false);
-            l54.setVisible(false);
-            l55.setVisible(false);
-            l56.setVisible(false);
-            l57.setVisible(false);
-            l58.setVisible(false);
-            l59.setVisible(false);
-            l60.setVisible(false);
-            l61.setVisible(false);
-            l62.setVisible(false);
-            l63.setVisible(false);
-            l64.setVisible(false);
-            l65.setVisible(false);
-            l66.setVisible(false);
-            l67.setVisible(false);
-            l68.setVisible(false);
-            l69.setVisible(false);
-            l70.setVisible(false);
-            l71.setVisible(false);
-            l72.setVisible(false);
-            l73.setVisible(false);
-            l74.setVisible(false);
-            l75.setVisible(false);
-            l76.setVisible(false);
-            l77.setVisible(false);
-            l78.setVisible(false);
-            l79.setVisible(false);
-            l80.setVisible(false);
-            l81.setVisible(false);
-            l82.setVisible(false);
-            l83.setVisible(false);
-            l84.setVisible(false);
-            l85.setVisible(false);
-            l86.setVisible(false);
-            l87.setVisible(false);
-            l88.setVisible(false);
-            l89.setVisible(false);
-            l90.setVisible(false);
-            l91.setVisible(false);
-            l92.setVisible(false);
-            l93.setVisible(false);
-            l94.setVisible(false);
-            l95.setVisible(false);
-            l96.setVisible(false);
-            l97.setVisible(false);
-            l98.setVisible(false);
-            l99.setVisible(false);
-            l100.setVisible(false);
-            l101.setVisible(false);
-            l102.setVisible(false);
-            l103.setVisible(false);
-            l104.setVisible(false);
-            l105.setVisible(false);
-            l106.setVisible(false);
-            l107.setVisible(false);
-            l108.setVisible(false);
-            l109.setVisible(false);
-            l110.setVisible(false);
-            l111.setVisible(false);
-            l112.setVisible(false);
-            l113.setVisible(false);
-            l114.setVisible(false);
-            l115.setVisible(false);
-            l116.setVisible(false);
-            l117.setVisible(false);
-            l118.setVisible(false);
-            l119.setVisible(false);
-            l120.setVisible(false);
-            l121.setVisible(false);
-            l122.setVisible(false);
-            l123.setVisible(false);
-            l124.setVisible(false);
-            l125.setVisible(false);
-        }
-        
+        setLineasVisible();
+    } 
+    @FXML
+    private void actVertices(ActionEvent event) {
+        setVerticesVisible();
+    }
+    private void setLineasVisible(){
+        l1.setVisible(btnlineas.isSelected());
+        l2.setVisible(btnlineas.isSelected());
+        l3.setVisible(btnlineas.isSelected());
+        l4.setVisible(btnlineas.isSelected());
+        l5.setVisible(btnlineas.isSelected());
+        l6.setVisible(btnlineas.isSelected());
+        l7.setVisible(btnlineas.isSelected());
+        l8.setVisible(btnlineas.isSelected());
+        l9.setVisible(btnlineas.isSelected());
+        l10.setVisible(btnlineas.isSelected());
+        l11.setVisible(btnlineas.isSelected());
+        l12.setVisible(btnlineas.isSelected());
+        l13.setVisible(btnlineas.isSelected());
+        l14.setVisible(btnlineas.isSelected());
+        l15.setVisible(btnlineas.isSelected());
+        l16.setVisible(btnlineas.isSelected());
+        l17.setVisible(btnlineas.isSelected());
+        l18.setVisible(btnlineas.isSelected());
+        l19.setVisible(btnlineas.isSelected());
+        l20.setVisible(btnlineas.isSelected());
+        l21.setVisible(btnlineas.isSelected());
+        l22.setVisible(btnlineas.isSelected());
+        l24.setVisible(btnlineas.isSelected());
+        l25.setVisible(btnlineas.isSelected());
+        l26.setVisible(btnlineas.isSelected());
+        l27.setVisible(btnlineas.isSelected());
+        l28.setVisible(btnlineas.isSelected());
+        l29.setVisible(btnlineas.isSelected());
+        l30.setVisible(btnlineas.isSelected());
+        l31.setVisible(btnlineas.isSelected());
+        l32.setVisible(btnlineas.isSelected());
+        l33.setVisible(btnlineas.isSelected());
+        l34.setVisible(btnlineas.isSelected());
+        l35.setVisible(btnlineas.isSelected());
+        l36.setVisible(btnlineas.isSelected());
+        l37.setVisible(btnlineas.isSelected());
+        l38.setVisible(btnlineas.isSelected());
+        l39.setVisible(btnlineas.isSelected());
+        l40.setVisible(btnlineas.isSelected());
+        l41.setVisible(btnlineas.isSelected());
+        l42.setVisible(btnlineas.isSelected());
+        l43.setVisible(btnlineas.isSelected());
+        l44.setVisible(btnlineas.isSelected());
+        l45.setVisible(btnlineas.isSelected());
+        l46.setVisible(btnlineas.isSelected());
+        l47.setVisible(btnlineas.isSelected());
+        l48.setVisible(btnlineas.isSelected());
+        l49.setVisible(btnlineas.isSelected());
+        l50.setVisible(btnlineas.isSelected());
+        l51.setVisible(btnlineas.isSelected());
+        l52.setVisible(btnlineas.isSelected());
+        l53.setVisible(btnlineas.isSelected());
+        l54.setVisible(btnlineas.isSelected());
+        l55.setVisible(btnlineas.isSelected());
+        l56.setVisible(btnlineas.isSelected());
+        l57.setVisible(btnlineas.isSelected());
+        l58.setVisible(btnlineas.isSelected());
+        l59.setVisible(btnlineas.isSelected());
+        l60.setVisible(btnlineas.isSelected());
+        l61.setVisible(btnlineas.isSelected());
+        l62.setVisible(btnlineas.isSelected());
+        l63.setVisible(btnlineas.isSelected());
+        l64.setVisible(btnlineas.isSelected());
+        l65.setVisible(btnlineas.isSelected());
+        l66.setVisible(btnlineas.isSelected());
+        l67.setVisible(btnlineas.isSelected());
+        l68.setVisible(btnlineas.isSelected());
+        l69.setVisible(btnlineas.isSelected());
+        l70.setVisible(btnlineas.isSelected());
+        l71.setVisible(btnlineas.isSelected());
+        l72.setVisible(btnlineas.isSelected());
+        l73.setVisible(btnlineas.isSelected());
+        l74.setVisible(btnlineas.isSelected());
+        l75.setVisible(btnlineas.isSelected());
+        l76.setVisible(btnlineas.isSelected());
+        l77.setVisible(btnlineas.isSelected());
+        l78.setVisible(btnlineas.isSelected());
+        l79.setVisible(btnlineas.isSelected());
+        l80.setVisible(btnlineas.isSelected());
+        l81.setVisible(btnlineas.isSelected());
+        l82.setVisible(btnlineas.isSelected());
+        l83.setVisible(btnlineas.isSelected());
+        l84.setVisible(btnlineas.isSelected());
+        l85.setVisible(btnlineas.isSelected());
+        l86.setVisible(btnlineas.isSelected());
+        l87.setVisible(btnlineas.isSelected());
+        l88.setVisible(btnlineas.isSelected());
+        l89.setVisible(btnlineas.isSelected());
+        l90.setVisible(btnlineas.isSelected());
+        l91.setVisible(btnlineas.isSelected());
+        l92.setVisible(btnlineas.isSelected());
+        l93.setVisible(btnlineas.isSelected());
+        l94.setVisible(btnlineas.isSelected());
+        l95.setVisible(btnlineas.isSelected());
+        l96.setVisible(btnlineas.isSelected());
+        l97.setVisible(btnlineas.isSelected());
+        l98.setVisible(btnlineas.isSelected());
+        l99.setVisible(btnlineas.isSelected());
+        l100.setVisible(btnlineas.isSelected());
+        l101.setVisible(btnlineas.isSelected());
+        l102.setVisible(btnlineas.isSelected());
+        l103.setVisible(btnlineas.isSelected());
+        l104.setVisible(btnlineas.isSelected());
+        l105.setVisible(btnlineas.isSelected());
+        l106.setVisible(btnlineas.isSelected());
+        l107.setVisible(btnlineas.isSelected());
+        l108.setVisible(btnlineas.isSelected());
+        l109.setVisible(btnlineas.isSelected());
+        l110.setVisible(btnlineas.isSelected());
+        l111.setVisible(btnlineas.isSelected());
+        l112.setVisible(btnlineas.isSelected());
+        l113.setVisible(btnlineas.isSelected());
+        l114.setVisible(btnlineas.isSelected());
+        l115.setVisible(btnlineas.isSelected());
+        l116.setVisible(btnlineas.isSelected());
+        l117.setVisible(btnlineas.isSelected());
+        l118.setVisible(btnlineas.isSelected());
+        l119.setVisible(btnlineas.isSelected());
+        l120.setVisible(btnlineas.isSelected());
+        l121.setVisible(btnlineas.isSelected());
+        l122.setVisible(btnlineas.isSelected());
+        l123.setVisible(btnlineas.isSelected());
+        l124.setVisible(btnlineas.isSelected());
+        l125.setVisible(btnlineas.isSelected());
+    }
+    private void setVerticesVisible(){
+        v1.setVisible(btnVerices.isSelected());
+        v2.setVisible(btnVerices.isSelected());
+        v3.setVisible(btnVerices.isSelected());
+        v4.setVisible(btnVerices.isSelected());
+        v5.setVisible(btnVerices.isSelected());
+        v6.setVisible(btnVerices.isSelected());
+        v7.setVisible(btnVerices.isSelected());
+        v8.setVisible(btnVerices.isSelected());
+        v9.setVisible(btnVerices.isSelected());
+        v10.setVisible(btnVerices.isSelected());
+        v11.setVisible(btnVerices.isSelected());
+        v12.setVisible(btnVerices.isSelected());
+        v13.setVisible(btnVerices.isSelected());
+        v14.setVisible(btnVerices.isSelected());
+        v15.setVisible(btnVerices.isSelected());
+        v16.setVisible(btnVerices.isSelected());
+        v17.setVisible(btnVerices.isSelected());
+        v18.setVisible(btnVerices.isSelected());
+        v19.setVisible(btnVerices.isSelected());
+        v20.setVisible(btnVerices.isSelected());
+        v21.setVisible(btnVerices.isSelected());
+        v22.setVisible(btnVerices.isSelected());
+        v23.setVisible(btnVerices.isSelected());
+        v24.setVisible(btnVerices.isSelected());
+        v25.setVisible(btnVerices.isSelected());
+        v26.setVisible(btnVerices.isSelected());
+        v27.setVisible(btnVerices.isSelected());
+        v28.setVisible(btnVerices.isSelected());
+        v29.setVisible(btnVerices.isSelected());
+        v30.setVisible(btnVerices.isSelected());
+        v31.setVisible(btnVerices.isSelected());
+        v32.setVisible(btnVerices.isSelected());
+        v33.setVisible(btnVerices.isSelected());
+        v34.setVisible(btnVerices.isSelected());
+        v35.setVisible(btnVerices.isSelected());
+        v36.setVisible(btnVerices.isSelected());
+        v37.setVisible(btnVerices.isSelected());
+        v38.setVisible(btnVerices.isSelected());
+        v39.setVisible(btnVerices.isSelected());
+        v40.setVisible(btnVerices.isSelected());
+        v41.setVisible(btnVerices.isSelected());
+        v42.setVisible(btnVerices.isSelected());
+        v43.setVisible(btnVerices.isSelected());
+        v44.setVisible(btnVerices.isSelected());
+        v45.setVisible(btnVerices.isSelected());
+        v46.setVisible(btnVerices.isSelected());
+        v47.setVisible(btnVerices.isSelected());
+        v48.setVisible(btnVerices.isSelected());
+        v49.setVisible(btnVerices.isSelected());
+        v50.setVisible(btnVerices.isSelected());
+        v51.setVisible(btnVerices.isSelected());
+        v52.setVisible(btnVerices.isSelected());
+        v53.setVisible(btnVerices.isSelected());
+        v54.setVisible(btnVerices.isSelected());
+        v55.setVisible(btnVerices.isSelected());
+        v56.setVisible(btnVerices.isSelected());
+        v57.setVisible(btnVerices.isSelected());
+        v58.setVisible(btnVerices.isSelected());
+        v59.setVisible(btnVerices.isSelected());
+        v60.setVisible(btnVerices.isSelected());
+        v61.setVisible(btnVerices.isSelected());
+        v62.setVisible(btnVerices.isSelected());
+        v63.setVisible(btnVerices.isSelected());
+        v64.setVisible(btnVerices.isSelected());
+        v65.setVisible(btnVerices.isSelected());
+        v66.setVisible(btnVerices.isSelected());
+        v67.setVisible(btnVerices.isSelected());
+        v68.setVisible(btnVerices.isSelected());
+        v69.setVisible(btnVerices.isSelected());
+        v70.setVisible(btnVerices.isSelected());
+        v71.setVisible(btnVerices.isSelected());
+        v72.setVisible(btnVerices.isSelected());
+        v73.setVisible(btnVerices.isSelected());
+        v74.setVisible(btnVerices.isSelected());
+        v75.setVisible(btnVerices.isSelected());
+        v76.setVisible(btnVerices.isSelected());
+        v77.setVisible(btnVerices.isSelected());
+        v78.setVisible(btnVerices.isSelected());
+        v79.setVisible(btnVerices.isSelected());
+        v80.setVisible(btnVerices.isSelected());
+        v81.setVisible(btnVerices.isSelected());
+        v82.setVisible(btnVerices.isSelected());
+        v83.setVisible(btnVerices.isSelected()); 
+        v84.setVisible(btnVerices.isSelected());
     }
 
     @FXML
-    private void actVertices(ActionEvent event) {
-        
-        if(btnVerices.isSelected()){
-            
-            v1.setVisible(true);
-            v2.setVisible(true);
-            v3.setVisible(true);
-            v4.setVisible(true);
-            v5.setVisible(true);
-            v6.setVisible(true);
-            v7.setVisible(true);
-            v8.setVisible(true);
-            v9.setVisible(true);
-            v10.setVisible(true);
-            v11.setVisible(true);
-            v12.setVisible(true);
-            v13.setVisible(true);
-            v14.setVisible(true);
-            v15.setVisible(true);
-            v16.setVisible(true);
-            v17.setVisible(true);
-            v18.setVisible(true);
-            v19.setVisible(true);
-            v20.setVisible(true);
-            v21.setVisible(true);
-            v22.setVisible(true);
-            v23.setVisible(true);
-            v24.setVisible(true);
-            v25.setVisible(true);
-            v26.setVisible(true);
-            v27.setVisible(true);
-            v28.setVisible(true);
-            v29.setVisible(true);
-            v30.setVisible(true);
-            v31.setVisible(true);
-            v32.setVisible(true);
-            v33.setVisible(true);
-            v34.setVisible(true);
-            v35.setVisible(true);
-            v36.setVisible(true);
-            v37.setVisible(true);
-            v38.setVisible(true);
-            v39.setVisible(true);
-            v40.setVisible(true);
-            v41.setVisible(true);
-            v42.setVisible(true);
-            v43.setVisible(true);
-            v44.setVisible(true);
-            v45.setVisible(true);
-            v46.setVisible(true);
-            v47.setVisible(true);
-            v48.setVisible(true);
-            v49.setVisible(true);
-            v50.setVisible(true);
-            v51.setVisible(true);
-            v52.setVisible(true);
-            v53.setVisible(true);
-            v54.setVisible(true);
-            v55.setVisible(true);
-            v56.setVisible(true);
-            v57.setVisible(true);
-            v58.setVisible(true);
-            v59.setVisible(true);
-            v60.setVisible(true);
-            v61.setVisible(true);
-            v62.setVisible(true);
-            v63.setVisible(true);
-            v64.setVisible(true);
-            v65.setVisible(true);
-            v66.setVisible(true);
-            v67.setVisible(true);
-            v68.setVisible(true);
-            v69.setVisible(true);
-            v70.setVisible(true);
-            v71.setVisible(true);
-            v72.setVisible(true);
-            v73.setVisible(true);
-            v74.setVisible(true);
-            v75.setVisible(true);
-            v76.setVisible(true);
-            v77.setVisible(true);
-            v78.setVisible(true);
-            v79.setVisible(true);
-            v80.setVisible(true);
-            v81.setVisible(true);
-            v82.setVisible(true);
-            v83.setVisible(true); 
-            v84.setVisible(true);
-         
-        }else{
-               v1.setVisible(false);
-            v2.setVisible(false);
-            v3.setVisible(false);
-            v4.setVisible(false);
-            v5.setVisible(false);
-            v6.setVisible(false);
-            v7.setVisible(false);
-            v8.setVisible(false);
-            v9.setVisible(false);
-            v10.setVisible(false);
-            v11.setVisible(false);
-            v12.setVisible(false);
-            v13.setVisible(false);
-            v14.setVisible(false);
-            v15.setVisible(false);
-            v16.setVisible(false);
-            v17.setVisible(false);
-            v18.setVisible(false);
-            v19.setVisible(false);
-            v20.setVisible(false);
-            v21.setVisible(false);
-            v22.setVisible(false);
-            v23.setVisible(false);
-            v24.setVisible(false);
-            v25.setVisible(false);
-            v26.setVisible(false);
-            v27.setVisible(false);
-            v28.setVisible(false);
-            v29.setVisible(false);
-            v30.setVisible(false);
-            v31.setVisible(false);
-            v32.setVisible(false);
-            v33.setVisible(false);
-            v34.setVisible(false);
-            v35.setVisible(false);
-            v36.setVisible(false);
-            v37.setVisible(false);
-            v38.setVisible(false);
-            v39.setVisible(false);
-            v40.setVisible(false);
-            v41.setVisible(false);
-            v42.setVisible(false);
-            v43.setVisible(false);
-            v44.setVisible(false);
-            v45.setVisible(false);
-            v46.setVisible(false);
-            v47.setVisible(false);
-            v48.setVisible(false);
-            v49.setVisible(false);
-            v50.setVisible(false);
-            v51.setVisible(false);
-            v52.setVisible(false);
-            v53.setVisible(false);
-            v54.setVisible(false);
-            v55.setVisible(false);
-            v56.setVisible(false);
-            v57.setVisible(false);
-            v58.setVisible(false);
-            v59.setVisible(false);
-            v60.setVisible(false);
-            v61.setVisible(false);
-            v62.setVisible(false);
-            v63.setVisible(false);
-            v64.setVisible(false);
-            v65.setVisible(false);
-            v66.setVisible(false);
-            v67.setVisible(false);
-            v68.setVisible(false);
-            v69.setVisible(false);
-            v70.setVisible(false);
-            v71.setVisible(false);
-            v72.setVisible(false);
-            v73.setVisible(false);
-            v74.setVisible(false);
-            v75.setVisible(false);
-            v76.setVisible(false);
-            v77.setVisible(false);
-            v78.setVisible(false);
-            v79.setVisible(false);
-            v80.setVisible(false);
-            v81.setVisible(false);
-            v82.setVisible(false);
-            v83.setVisible(false); 
-            v84.setVisible(false);  
-             
-        }
-
-        
-        
+    private void actChoque(ActionEvent event) {
     }
-    
-  
-    
+
+    @FXML
+    private void actTrafico(ActionEvent event) {
+    }
+
+    @FXML
+    private void actCerrarCalle(ActionEvent event) {
+    }
 }
