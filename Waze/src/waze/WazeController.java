@@ -48,8 +48,8 @@ public class WazeController implements Initializable {
             l60, l61, l71, l68, l70, l52, l53, l51, l50, l54, l74, l62, l63, l64, l73, l72, l66, l67,
             l75, l76, l85, l86, l81, l84, l83, l82, l77, l90, l94, l102, l99, l107, l110, l112, l113,
             l111, l117, l114, l118, l121, l120, l115, l119, l122, l91, l95, l92, l100, l108, l123, l124,
-            l80, l96, l101, l104, l97, l105, l109, l106, l98, l93, l87, l88, l89, l78, l79, l116, l103, l125;
-    private Line line128;
+            l80, l96, l101, l104, l97, l105, l109, l106, l98, l93, l87, l88, l89, l78, l79, l116, l103, l125, l128;
+    
     @FXML
     private Button btnChoque;
     @FXML
@@ -67,8 +67,7 @@ public class WazeController implements Initializable {
     @FXML
     private CheckBox cbxDijkstra;
    
-    @FXML
-    private Line l128;
+    
     @FXML
     private Line l126;
     @FXML
@@ -269,7 +268,7 @@ public class WazeController implements Initializable {
         l123.setVisible(btnlineas.isSelected());
         l124.setVisible(btnlineas.isSelected());
         l125.setVisible(btnlineas.isSelected());
-        line128.setVisible(btnlineas.isSelected());
+        l128.setVisible(btnlineas.isSelected());
     }
     private void setVerticesVisible(){
         v1.setVisible(btnVerices.isSelected());
