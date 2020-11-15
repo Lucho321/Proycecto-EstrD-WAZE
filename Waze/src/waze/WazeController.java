@@ -32,8 +32,6 @@ public class WazeController implements Initializable {
     @FXML
     private ImageView mapa;
     @FXML
-    private Line line128;
-    @FXML
     private CheckBox btnlineas;
     @FXML
     private CheckBox btnVerices;
@@ -456,8 +454,6 @@ public class WazeController implements Initializable {
     @FXML
     private Button btnChoque;
     @FXML
-    private ImageView imgFondo;
-    @FXML
     private Button btnTrafico;
     @FXML
     private Button btnCerrarCalle;
@@ -466,6 +462,12 @@ public class WazeController implements Initializable {
 
     private List<Object> lineasSeleccionadas = new ArrayList<Object>();
     private List<Object> verticesSeleccionados = new ArrayList<Object>();
+    @FXML
+    private Line line128;
+    @FXML
+    private CheckBox cbxFloyd;
+    @FXML
+    private CheckBox cbxDijkstra;
 
     /**
      * Initializes the controller class.
@@ -642,6 +644,7 @@ public class WazeController implements Initializable {
         l123.setVisible(btnlineas.isSelected());
         l124.setVisible(btnlineas.isSelected());
         l125.setVisible(btnlineas.isSelected());
+        line128.setVisible(btnlineas.isSelected());
     }
     private void setVerticesVisible(){
         v1.setVisible(btnVerices.isSelected());
@@ -740,5 +743,15 @@ public class WazeController implements Initializable {
 
     @FXML
     private void actCerrarCalle(ActionEvent event) {
+    }
+    
+    @FXML
+    private void actDijkstra(ActionEvent event){
+        cbxFloyd.setSelected(false);
+    }
+    
+    @FXML
+    private void actFloyd(ActionEvent event){
+        cbxDijkstra.setSelected(false);
     }
 }
