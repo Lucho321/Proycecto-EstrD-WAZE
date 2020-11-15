@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import waze.util.Vertice;
 
 /**
  * FXML Controller class
@@ -452,23 +453,25 @@ public class WazeController implements Initializable {
     @FXML
     private Line l125;
     @FXML
+    private Line line128;
+    @FXML
     private Button btnChoque;
     @FXML
     private Button btnTrafico;
     @FXML
     private Button btnCerrarCalle;
-    
-    
-
-    private List<Object> lineasSeleccionadas = new ArrayList<Object>();
-    private List<Object> verticesSeleccionados = new ArrayList<Object>();
-    @FXML
-    private Line line128;
     @FXML
     private CheckBox cbxFloyd;
     @FXML
     private CheckBox cbxDijkstra;
+    
+    
+    
+    
 
+    
+    private List<Vertice> vertices = new ArrayList();
+    
     /**
      * Initializes the controller class.
      */
@@ -503,13 +506,12 @@ public class WazeController implements Initializable {
     private void clickLine(MouseEvent event) {
         Line l = (Line)(event.getSource());
         l.setStroke(Color.ORANGE);
-        lineasSeleccionadas.add(l);
     }
     @FXML
     private void clickCircle(MouseEvent event) {
         Circle c = (Circle)event.getSource();
         c.setFill(Color.ORANGE);
-        verticesSeleccionados.add(c);
+        
     }
     @FXML
     private void actLineas(ActionEvent event) {
@@ -753,5 +755,23 @@ public class WazeController implements Initializable {
     @FXML
     private void actFloyd(ActionEvent event){
         cbxDijkstra.setSelected(false);
+    }
+    
+    private void addVertices(){
+        vertices.add((Vertice)v1); vertices.add((Vertice)v2); vertices.add((Vertice)v3); vertices.add((Vertice)v4); vertices.add((Vertice)v5); vertices.add((Vertice)v6);
+        vertices.add((Vertice)v7); vertices.add((Vertice)v8); vertices.add((Vertice)v9); vertices.add((Vertice)v10); vertices.add((Vertice)v11); vertices.add((Vertice)v12);
+        vertices.add((Vertice)v13); vertices.add((Vertice)v14); vertices.add((Vertice)v15); vertices.add((Vertice)v16); vertices.add((Vertice)v17); vertices.add((Vertice)v18);
+        vertices.add((Vertice)v19); vertices.add((Vertice)v20); vertices.add((Vertice)v21); vertices.add((Vertice)v22); vertices.add((Vertice)v23); vertices.add((Vertice)v24);
+        vertices.add((Vertice)v25); vertices.add((Vertice)v26); vertices.add((Vertice)v27); vertices.add((Vertice)v28); vertices.add((Vertice)v29); vertices.add((Vertice)v30);
+        vertices.add((Vertice)v31); vertices.add((Vertice)v32); vertices.add((Vertice)v33); vertices.add((Vertice)v34); vertices.add((Vertice)v35); vertices.add((Vertice)v36);
+        vertices.add((Vertice)v37); vertices.add((Vertice)v38); vertices.add((Vertice)v39); vertices.add((Vertice)v40); vertices.add((Vertice)v41); vertices.add((Vertice)v42);
+        vertices.add((Vertice)v43); vertices.add((Vertice)v44); vertices.add((Vertice)v45); vertices.add((Vertice)v46); vertices.add((Vertice)v47); vertices.add((Vertice)v48);
+        vertices.add((Vertice)v49); vertices.add((Vertice)v50); vertices.add((Vertice)v51); vertices.add((Vertice)v52); vertices.add((Vertice)v53); vertices.add((Vertice)v54);
+        vertices.add((Vertice)v55); vertices.add((Vertice)v56); vertices.add((Vertice)v57); vertices.add((Vertice)v58); vertices.add((Vertice)v59); vertices.add((Vertice)v60);
+        vertices.add((Vertice)v61); vertices.add((Vertice)v62); vertices.add((Vertice)v63); vertices.add((Vertice)v64); vertices.add((Vertice)v65); vertices.add((Vertice)v66);
+        vertices.add((Vertice)v67); vertices.add((Vertice)v68); vertices.add((Vertice)v69); vertices.add((Vertice)v70); vertices.add((Vertice)v71); vertices.add((Vertice)v72);
+        vertices.add((Vertice)v73); vertices.add((Vertice)v74); vertices.add((Vertice)v75); vertices.add((Vertice)v76); vertices.add((Vertice)v77); vertices.add((Vertice)v78);
+        vertices.add((Vertice)v79); vertices.add((Vertice)v80); vertices.add((Vertice)v81); vertices.add((Vertice)v82); vertices.add((Vertice)v83); vertices.add((Vertice)v84);
+        vertices.add((Vertice)v1); vertices.add((Vertice)v1); vertices.add((Vertice)v1); vertices.add((Vertice)v1); vertices.add((Vertice)v1); vertices.add((Vertice)v1);
     }
 }

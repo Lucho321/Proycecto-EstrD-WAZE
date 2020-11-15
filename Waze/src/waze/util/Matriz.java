@@ -15,6 +15,7 @@ public class Matriz {
     
     public Matriz(){
         m = new int[91][91];
+        inicializar();
     }
     
     public int getPeso(int a, int b){
@@ -27,7 +28,7 @@ public class Matriz {
             
     }
     
-    public void setPos(int a, int b, int valor){
+    public void setPeso(int a, int b, int valor){
         m[a][b] = valor;
     }
     
@@ -37,7 +38,6 @@ public class Matriz {
                 m[i][j] = noCamino;
             }
         }
-        
         m[0][2] = 2; m[0][3] = 2; m[1][2] = 1; m[1][11] = 6; m[2][0] = 2; m[2][1] = 1; m[3][0] = 2; m[3][4] = 3; m[3][6] = 4; m[4][3] = 3; 
         m[4][5] = 2; m[5][4] = 2; m[5][6] = 4; m[5][7] = 2; m[6][3] = 4; m[6][5] = 4; m[6][10] = 3; m[7][5] = 2; m[7][8] = 2; m[7][9] = 2;
         m[8][7] = 2; m[8][32] = 5; m[9][7] = 2; m[9][10] = 3; m[9][31] = 4; m[10][6] = 3; m[10][9] = 3; m[10][12] = 3; m[10][11] = 3; m[11][1] = 6;
@@ -68,6 +68,10 @@ public class Matriz {
         m[81][80] = 1; m[81][82] = 2; m[82][81] = 2; m[83][84] = 6; m[84][83] = 6; m[84][70] = 3; m[84][85] = 6; m[85][79] = 3; m[85][84] = 6; 
         m[85][89] = 3; m[86][74] = 5; m[86][87] = 1; m[87][88] = 4; m[87][75] = 5; m[88][89] = 3; m[88][77] = 6; m[88][87] = 4; m[89][90] = 10; 
         m[89][85] = 3; m[89][88] = 3; m[90][65] = 5; m[90][89] = 10;
+    }
+    
+    public int[][] getMatriz(){
+        return m;
     }
     
 }
