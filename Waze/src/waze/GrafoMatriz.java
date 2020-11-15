@@ -79,7 +79,7 @@ public class GrafoMatriz {
     boolean encontrado = false;
     for ( i = 0; (i < numVerts) && !encontrado;)
         {
-            encontrado = verts[i].OnomVertice().equals(v);
+            encontrado = verts[i].getNombreVertice().equals(v);
             if (!encontrado) i++ ;
         }
     return (i < numVerts) ? i : -1 ;

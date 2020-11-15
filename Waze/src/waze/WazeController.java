@@ -36,421 +36,20 @@ public class WazeController implements Initializable {
     @FXML
     private CheckBox btnVerices;
     @FXML
-    private Circle v33;
-    @FXML
-    private Circle v8;
-    @FXML
-    private Circle v9;
-    @FXML
-    private Circle v34;
-    @FXML
-    private Circle v10;
-    @FXML
-    private Circle v46;
-    @FXML
-    private Circle v48;
-    @FXML
-    private Circle v45;
-    @FXML
-    private Circle v35;
-    @FXML
-    private Circle v36;
-    @FXML
-    private Circle v32;
-    @FXML
-    private Circle v43;
-    @FXML
-    private Circle v11;
-    @FXML
-    private Circle v37;
-    @FXML
-    private Circle v39;
-    @FXML
-    private Circle v38;
-    @FXML
-    private Circle v49;
-    @FXML
-    private Circle v7;
-    @FXML
-    private Circle v42;
-    @FXML
-    private Circle v54;
-    @FXML
-    private Circle v50;
-    @FXML
-    private Circle v65;
-    @FXML
-    private Circle v64;
-    @FXML
-    private Circle v6;
-    @FXML
-    private Circle v66;
-    @FXML
-    private Circle v30;
-    @FXML
-    private Circle v5;
-    @FXML
-    private Circle v4;
-    @FXML
-    private Circle v3;
-    @FXML
-    private Circle v29;
-    @FXML
-    private Circle v28;
-    @FXML
-    private Circle v2;
-    @FXML
-    private Circle v1;
-    @FXML
-    private Circle v31;
-    @FXML
-    private Circle v41;
-    @FXML
-    private Circle v27;
-    @FXML
-    private Circle v26;
-    @FXML
-    private Circle v44;
-    @FXML
-    private Circle v47;
-    @FXML
-    private Circle v63;
-    @FXML
-    private Circle v72;
-    @FXML
-    private Circle v57;
-    @FXML
-    private Circle v55;
-    @FXML
-    private Circle v25;
-    @FXML
-    private Circle v60;
-    @FXML
-    private Circle v58;
-    @FXML
-    private Circle v59;
-    @FXML
-    private Circle v24;
-    @FXML
-    private Circle v61;
-    @FXML
-    private Circle v62;
-    @FXML
-    private Circle v73;
-    @FXML
-    private Circle v74;
-    @FXML
-    private Circle v53;
-    @FXML
-    private Circle v83;
-    @FXML
-    private Circle v51;
-    @FXML
-    private Circle v40;
-    @FXML
-    private Circle v13;
-    @FXML
-    private Circle v14;
-    @FXML
-    private Circle v69;
-    @FXML
-    private Circle v52;
-    @FXML
-    private Circle v68;
-    @FXML
-    private Circle v67;
-    @FXML
-    private Circle v71;
-    @FXML
-    private Circle v76;
-    @FXML
-    private Circle v75;
-    @FXML
-    private Circle v82;
-    @FXML
-    private Circle v21;
-    @FXML
-    private Circle v22;
-    @FXML
-    private Circle v20;
-    @FXML
-    private Circle v81;
-    @FXML
-    private Circle v80;
-    @FXML
-    private Circle v70;
-    @FXML
-    private Circle v77;
-    @FXML
-    private Circle v19;
-    @FXML
-    private Circle v79;
-    @FXML
-    private Circle v78;
-    @FXML
-    private Circle v18;
-    @FXML
-    private Circle v15;
-    @FXML
-    private Circle v16;
-    @FXML
-    private Circle v17;
-    @FXML
-    private Circle v56;
-    @FXML
-    private Circle v23;
-    @FXML
-    private Circle v12;
-    @FXML
-    private Circle v84;
-    @FXML
-    private Line l24;
-    @FXML
-    private Line l22;
-    @FXML
-    private Line l21;
-    @FXML
-    private Line l20;
-    @FXML
-    private Line l19;
-    @FXML
-    private Line l18;
-    @FXML
-    private Line l14;
-    @FXML
-    private Line l17;
-    @FXML
-    private Line l15;
-    @FXML
-    private Line l26;
-    @FXML
-    private Line l25;
-    @FXML
-    private Line l8;
-    @FXML
-    private Line l7;
-    @FXML
-    private Line l6;
-    @FXML
-    private Line l5;
-    @FXML
-    private Line l4;
-    @FXML
-    private Line l3;
-    @FXML
-    private Line l2;
-    @FXML
-    private Line l1;
-    @FXML
-    private Line l27;
-    @FXML
-    private Line l11;
-    @FXML
-    private Line l12;
-    @FXML
-    private Line l10;
-    @FXML
-    private Line l9;
-    @FXML
-    private Line l13;
-    @FXML
-    private Line l16;
-    @FXML
-    private Line l30;
-    @FXML
-    private Line l29;
-    @FXML
-    private Line l28;
-    @FXML
-    private Line l38;
-    @FXML
-    private Line l35;
-    @FXML
-    private Line l36;
-    @FXML
-    private Line l31;
-    @FXML
-    private Line l32;
-    @FXML
-    private Line l33;
-    @FXML
-    private Line l34;
-    @FXML
-    private Line l42;
-    @FXML
-    private Line l43;
-    @FXML
-    private Line l41;
-    @FXML
-    private Line l39;
-    @FXML
-    private Line l37;
-    @FXML
-    private Line l40;
-    @FXML
-    private Line l44;
-    @FXML
-    private Line l56;
-    @FXML
-    private Line l69;
-    @FXML
-    private Line l57;
-    @FXML
-    private Line l49;
-    @FXML
-    private Line l55;
-    @FXML
-    private Line l46;
-    @FXML
-    private Line l45;
-    @FXML
-    private Line l47;
-    @FXML
-    private Line l48;
-    @FXML
-    private Line l58;
-    @FXML
-    private Line l65;
-    @FXML
-    private Line l59;
-    @FXML
-    private Line l60;
-    @FXML
-    private Line l61;
-    @FXML
-    private Line l71;
-    @FXML
-    private Line l68;
-    @FXML
-    private Line l70;
-    @FXML
-    private Line l52;
-    @FXML
-    private Line l53;
-    @FXML
-    private Line l51;
-    @FXML
-    private Line l50;
-    @FXML
-    private Line l54;
-    @FXML
-    private Line l74;
-    @FXML
-    private Line l62;
-    @FXML
-    private Line l63;
-    @FXML
-    private Line l64;
-    @FXML
-    private Line l73;
-    @FXML
-    private Line l72;
-    @FXML
-    private Line l66;
-    @FXML
-    private Line l67;
-    @FXML
-    private Line l75;
-    @FXML
-    private Line l76;
-    @FXML
-    private Line l85;
-    @FXML
-    private Line l86;
-    @FXML
-    private Line l81;
-    @FXML
-    private Line l84;
-    @FXML
-    private Line l83;
-    @FXML
-    private Line l82;
-    @FXML
-    private Line l77;
-    @FXML
-    private Line l90;
-    @FXML
-    private Line l94;
-    @FXML
-    private Line l102;
-    @FXML
-    private Line l99;
-    @FXML
-    private Line l107;
-    @FXML
-    private Line l110;
-    @FXML
-    private Line l112;
-    @FXML
-    private Line l113;
-    @FXML
-    private Line l111;
-    @FXML
-    private Line l117;
-    @FXML
-    private Line l114;
-    @FXML
-    private Line l118;
-    @FXML
-    private Line l121;
-    @FXML
-    private Line l120;
-    @FXML
-    private Line l115;
-    @FXML
-    private Line l119;
-    @FXML
-    private Line l122;
-    @FXML
-    private Line l91;
-    @FXML
-    private Line l95;
-    @FXML
-    private Line l92;
-    @FXML
-    private Line l100;
-    @FXML
-    private Line l108;
-    @FXML
-    private Line l123;
-    @FXML
-    private Line l124;
-    @FXML
-    private Line l80;
-    @FXML
-    private Line l96;
-    @FXML
-    private Line l101;
-    @FXML
-    private Line l104;
-    @FXML
-    private Line l97;
-    @FXML
-    private Line l105;
-    @FXML
-    private Line l109;
-    @FXML
-    private Line l106;
-    @FXML
-    private Line l98;
-    @FXML
-    private Line l93;
-    @FXML
-    private Line l87;
-    @FXML
-    private Line l88;
-    @FXML
-    private Line l89;
-    @FXML
-    private Line l78;
-    @FXML
-    private Line l79;
-    @FXML
-    private Line l116;
-    @FXML
-    private Line l103;
-    @FXML
-    private Line l125;
+    private Circle v33, v8, v9, v34, v10, v46, v48, v45, v35, v36, v32, v43, v11, v37, v39, v38, 
+            v49, v7, v42, v54, v50, v65, v64, v6, v66, v30, v5, v4, v3, v29, v28, v2, v1, v12,
+            v31, v41, v27, v26, v44, v47, v63, v72, v57, v55, v25, v60, v58, v59, v24, v61, v84,
+            v62, v73, v74, v53, v83, v51, v40, v13, v14, v69, v52, v68, v67, v71, v76, v75, v23,
+            v82, v21, v22, v20, v81, v80, v70, v77, v19, v79, v78, v18, v15, v16, v17, v56;
+    @FXML
+    private Line l24, l22, l21, l20, l19, l18, l14, l17, l15, l26, l25, l8, l7, l6, l5, l4, l3, l2, l1,
+            l27, l11, l12, l10, l9, l13, l16, l30, l29, l28, l38, l35, l36, l31, l32, l33, l34, l42,
+            l43, l41, l39, l37, l40, l44, l56, l69, l57, l49, l55, l46, l45, l47, l48, l58, l65, l59,
+            l60, l61, l71, l68, l70, l52, l53, l51, l50, l54, l74, l62, l63, l64, l73, l72, l66, l67,
+            l75, l76, l85, l86, l81, l84, l83, l82, l77, l90, l94, l102, l99, l107, l110, l112, l113,
+            l111, l117, l114, l118, l121, l120, l115, l119, l122, l91, l95, l92, l100, l108, l123, l124,
+            l80, l96, l101, l104, l97, l105, l109, l106, l98, l93, l87, l88, l89, l78, l79, l116, l103, l125;
+    private Line line128;
     @FXML
     private Button btnChoque;
     @FXML
@@ -462,12 +61,38 @@ public class WazeController implements Initializable {
 
     private List<Object> lineasSeleccionadas = new ArrayList<Object>();
     private List<Object> verticesSeleccionados = new ArrayList<Object>();
-    @FXML
-    private Line line128;
+    
     @FXML
     private CheckBox cbxFloyd;
     @FXML
     private CheckBox cbxDijkstra;
+   
+    @FXML
+    private Line l128;
+    @FXML
+    private Line l126;
+    @FXML
+    private Line l1261;
+    @FXML
+    private Line l12611;
+    @FXML
+    private Line l1261111;
+    @FXML
+    private Line l126111;
+    @FXML
+    private Circle v110;
+    @FXML
+    private Circle v112;
+    @FXML
+    private Circle v1121;
+    @FXML
+    private Circle v1122;
+    @FXML
+    private Circle v111;
+    @FXML
+    private Circle v11211;
+    @FXML
+    private Circle v112111;
 
     /**
      * Initializes the controller class.
