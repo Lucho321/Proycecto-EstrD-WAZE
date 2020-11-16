@@ -365,6 +365,23 @@ public class WazeController implements Initializable {
     }
     @FXML
     private void actComenzar(ActionEvent event) {
+        Image image = new Image(getClass().getResourceAsStream("/imagenes/carrito.png"));
+        ImageView iv = new ImageView(image);
+        iv.setFitHeight(40);
+        iv.setFitWidth(40);
+        
+        
+        iv.setX(vertices.get(0).getLayoutX()-20);
+        iv.setY(vertices.get(0).getLayoutY()-20);
+
+        anchorPane.getChildren().add(iv);
+//        Circle circle = new Circle();
+//        circle.setFill(Color.BLACK);
+//        circle.setLayoutX(vertices.get(0).getLayoutX());
+//        circle.setLayoutY(vertices.get(0).getLayoutY());
+//        circle.setRadius(20);
+//        circle.setStrokeWidth(20);
+//        anchorPane.getChildren().add(circle);
     }
 }
    
