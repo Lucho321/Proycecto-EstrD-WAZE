@@ -24,6 +24,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
+import waze.algoritmos.Dijkstra;
+import waze.algoritmos.Floyd;
 import waze.util.Matriz;
 import waze.util.Vertice;
 
@@ -126,6 +128,8 @@ public class WazeController implements Initializable {
         
         
     }    
+    
+    
 
     @FXML
     private void clickLine(MouseEvent event) {
@@ -175,9 +179,15 @@ public class WazeController implements Initializable {
             x.setVisible(btnVertices.isSelected());
         });
     }
-
+    
+    Matriz m = new Matriz();
+    Dijkstra d = new Dijkstra();
+    Floyd f = new Floyd();
+    GrafoMatriz g = new GrafoMatriz();
     @FXML
     private void actChoque(ActionEvent event) {
+        //d.dijkstra(m.getMatriz(), 1, 10);
+        f.floyd(91, g, 1, 10);
     }
 
     @FXML
