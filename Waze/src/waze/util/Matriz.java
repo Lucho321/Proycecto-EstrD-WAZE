@@ -73,5 +73,8 @@ public class Matriz {
     public int[][] getMatriz(){
         return m;
     }
+    public int getNoCamino(){
+        return noCamino;
+    }
     
 }
