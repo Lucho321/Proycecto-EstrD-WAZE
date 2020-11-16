@@ -11,7 +11,7 @@ public class Dijkstra{
   
 
     public void dijkstra(int[][] matrizPesos,int iniVertice, int finalVertice){ 
-        int nVertices = matrizPesos[0].length; //83
+        int nVertices = matrizPesos[0].length; //91
   
         // DistanciasMasCortas[i] guarda
         // distancia mas corta desde el origen hasta i
