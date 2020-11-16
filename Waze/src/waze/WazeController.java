@@ -63,11 +63,11 @@ public class WazeController implements Initializable {
     private CheckBox cbxDijkstra;
 
     
-
     private List<Circle> circles = new ArrayList();
     private List<Circle> vertices = new ArrayList();
     private List<Line> lines = new ArrayList();
     private List<Line> ruta = new ArrayList();
+    
     @FXML
     private Label lblPunto;
     @FXML
@@ -88,7 +88,7 @@ public class WazeController implements Initializable {
             v82, v21, v22, v20, v81, v80, v70, v77, v19, v79, v78, v18, v15, v16, v17, v56, v85, 
             v86, v87, v88, v89, v90;
     
-    
+    private boolean tipoRecorrido; //TRUE DIJKSTRA FALSE FLOYD
     /**
      * Initializes the controller class.
      */
@@ -140,26 +140,29 @@ public class WazeController implements Initializable {
     @FXML
     private void clickCircle(MouseEvent event) {
         Circle c = (Circle)event.getSource();
-        
-        
         if(modo.equals("seleccionarRuta")){
             modo = "puntoInicio";
             vertices.add(c);
-            c.setFill(Color.PINK);
+            c.setFill(Color.YELLOW);
             lblPunto.setText("Seleccione el punto de llegada");
             return;
         }
         if(modo.equals("puntoInicio")){
             modo = "puntoLlegada";
             vertices.add(c);
-            c.setFill(Color.PINK);
+            c.setFill(Color.YELLOW);
             lblPunto.setText("");
-            dibujarRuta(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));
+            if(tipoRecorrido){
+                dibujarRutaDijkstra(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));
+            }else{
+                dibujarRutaFloyd(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));
+            }
         }
         if(modo.equals("puntoLlegada")){
             btnComenzar.setDisable(false);
         }
-    }  
+    }
+      
     
     @FXML
     private void actLineas(ActionEvent event) {
@@ -189,7 +192,6 @@ public class WazeController implements Initializable {
     @FXML
     private void actChoque(ActionEvent event) {
         //d.dijkstra(m.getMatriz(), 1, 10);
-        f.floyd(91, g, 1, 10);
     }
 
     @FXML
@@ -202,12 +204,14 @@ public class WazeController implements Initializable {
     
     @FXML
     private void actDijkstra(ActionEvent event){
+        tipoRecorrido = true;
         cbxFloyd.setSelected(false);
         seleccionarRuta();
     }
     
     @FXML
     private void actFloyd(ActionEvent event){
+        tipoRecorrido = false;
         cbxDijkstra.setSelected(false);
         seleccionarRuta();
     }
@@ -293,8 +297,6 @@ public class WazeController implements Initializable {
                     endY = circles.get(j).getLayoutY();
                     
                     dibujarLinea(startX, startY, endX, endY, Color.DARKCYAN);
-                    
-                    
                 }
             }
         }
@@ -318,7 +320,7 @@ public class WazeController implements Initializable {
         ruta.add(l);
     }
 
-    private void dibujarRuta(int a, int b){
+    private void dibujarRutaDijkstra(int a, int b){
         int[][] m = matriz.getMatriz();
         Dijkstra d = new Dijkstra();
         d.dijkstra(m, a, b);
@@ -339,6 +341,27 @@ public class WazeController implements Initializable {
             x.toFront();
         });
         
+    }
+    private void dibujarRutaFloyd(int a, int b){
+        Floyd f = new Floyd();
+        f.floyd(a, b);
+        
+        List<Integer> camino = f.getRoad();
+        int cont = 0;
+        
+        for(int i=0; i<camino.size(); i++){
+            Circle c = circles.get(camino.get(i));
+            c.setFill(Color.YELLOW);
+            Circle c2 = new Circle();
+            
+            if(i+1 < camino.size()){
+                c2 = circles.get(camino.get(i+1));
+                dibujarLinea(c.getLayoutX(), c.getLayoutY(), c2.getLayoutX(), c2.getLayoutY(), Color.YELLOW);
+            }
+        }
+        circles.forEach(x->{
+            x.toFront();
+        });
     }
     @FXML
     private void actComenzar(ActionEvent event) {
