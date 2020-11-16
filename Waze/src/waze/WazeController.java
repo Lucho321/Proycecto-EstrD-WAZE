@@ -365,6 +365,19 @@ public class WazeController implements Initializable {
     }
     @FXML
     private void actComenzar(ActionEvent event) {
+        
+        
+        
+//        Circle circle = new Circle();
+//        circle.setFill(Color.BLACK);
+//        circle.setLayoutX(vertices.get(0).getLayoutX());
+//        circle.setLayoutY(vertices.get(0).getLayoutY());
+//        circle.setRadius(20);
+//        circle.setStrokeWidth(20);
+//        anchorPane.getChildren().add(circle);
+    }
+    
+    private void recorrido(Circle a, Circle b){
         Image image = new Image(getClass().getResourceAsStream("/imagenes/carrito.png"));
         ImageView iv = new ImageView(image);
         iv.setFitHeight(40);
@@ -375,13 +388,17 @@ public class WazeController implements Initializable {
         iv.setY(vertices.get(0).getLayoutY()-20);
 
         anchorPane.getChildren().add(iv);
-//        Circle circle = new Circle();
-//        circle.setFill(Color.BLACK);
-//        circle.setLayoutX(vertices.get(0).getLayoutX());
-//        circle.setLayoutY(vertices.get(0).getLayoutY());
-//        circle.setRadius(20);
-//        circle.setStrokeWidth(20);
-//        anchorPane.getChildren().add(circle);
+        for(double i=a.getLayoutX(); i<b.getLayoutX(); i++){
+            for(double j=a.getLayoutY(); j<b.getLayoutY(); j++){
+                
+            }
+        }
+        double x = a.getLayoutX();
+        double y = a.getLayoutY();
+        while(x<b.getLayoutX() && y<b.getLayoutY()){
+            //anchorPane.getChildren().remove(iv.get)
+        }
+        
     }
 }
    
