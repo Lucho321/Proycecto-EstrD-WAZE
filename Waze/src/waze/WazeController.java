@@ -67,6 +67,7 @@ public class WazeController implements Initializable {
     private List<Circle> circles = new ArrayList();
     private List<Circle> vertices = new ArrayList();
     private List<Line> lines = new ArrayList();
+    private List<Line> ruta = new ArrayList();
     @FXML
     private Label lblPunto;
     @FXML
@@ -153,6 +154,7 @@ public class WazeController implements Initializable {
             vertices.add(c);
             c.setFill(Color.PINK);
             lblPunto.setText("");
+            dibujarRuta(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));
         }
         if(modo.equals("puntoLlegada")){
             btnComenzar.setDisable(false);
@@ -243,6 +245,7 @@ public class WazeController implements Initializable {
             vertices.clear();
             modo = "seleccionarRuta";
             lblPunto.setText("Seleccione el punto de partida");  
+            
         }
         if(modo.equals("puntoLlegada")){
             if(vertices.get(1) != null){
@@ -253,6 +256,18 @@ public class WazeController implements Initializable {
                 btnComenzar.setDisable(true);
             }
         }
+        
+        ruta.forEach(x->{
+            x.setStroke(Color.DARKCYAN);
+        });
+        circles.forEach(x->{
+            if(!vertices.isEmpty()){
+                if(x != vertices.get(0)){
+                    x.setFill(Color.WHITE);
+                }
+            }
+        });
+        
     }
     
     private void seleccionarRuta(){
@@ -277,18 +292,9 @@ public class WazeController implements Initializable {
                     endX = circles.get(j).getLayoutX();
                     endY = circles.get(j).getLayoutY();
                     
-                    Line l = new Line();
-                    l.setId(String.valueOf(cont));
-                    l.setStartX(startX);
-                    l.setStartY(startY);
-                    l.setEndX(endX);
-                    l.setEndY(endY);
-                    l.setStrokeWidth(10);
-                    l.setStroke(Color.DARKCYAN);
-                    l.setStrokeLineCap(StrokeLineCap.ROUND);
-                    anchorPane.getChildren().add(l);
+                    dibujarLinea(startX, startY, endX, endY, Color.DARKCYAN);
                     
-                    lines.add(l);
+                    
                 }
             }
         }
@@ -296,7 +302,44 @@ public class WazeController implements Initializable {
             x.toFront();
         });
     }
+    
+    private void dibujarLinea(double startX, double startY, double endX, double endY, Color c){
+        Line l = new Line();
+        l.setId(String.valueOf(cont));
+        l.setStartX(startX);
+        l.setStartY(startY);
+        l.setEndX(endX);
+        l.setEndY(endY);
+        l.setStrokeWidth(10);
+        l.setStroke(c);
+        l.setStrokeLineCap(StrokeLineCap.ROUND);
+        anchorPane.getChildren().add(l);
 
+        ruta.add(l);
+    }
+
+    private void dibujarRuta(int a, int b){
+        int[][] m = matriz.getMatriz();
+        Dijkstra d = new Dijkstra();
+        d.dijkstra(m, a, b);
+        List<Integer> camino = d.getRoad();
+        int cont = 0;
+        
+        for(int i=0; i<camino.size(); i++){
+            Circle c = circles.get(camino.get(i));
+            c.setFill(Color.YELLOW);
+            Circle c2 = new Circle();
+            
+            if(i+1 < camino.size()){
+                c2 = circles.get(camino.get(i+1));
+                dibujarLinea(c.getLayoutX(), c.getLayoutY(), c2.getLayoutX(), c2.getLayoutY(), Color.YELLOW);
+            }
+        }
+        circles.forEach(x->{
+            x.toFront();
+        });
+        
+    }
     @FXML
     private void actComenzar(ActionEvent event) {
     }
