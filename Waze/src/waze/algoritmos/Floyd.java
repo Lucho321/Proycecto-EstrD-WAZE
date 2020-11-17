@@ -61,19 +61,19 @@ public class Floyd {
                 }
             }
         }
-        System.out.println(q+" - "+r);
+        //System.out.println(q+" - "+r);
         recuperaCamino(q, r);
     }
 
     public void recuperaCamino(int i, int j) {
         road = new ArrayList<>();
-        System.out.println(" camino para ir de " + i + " a " +j);
+        //System.out.println(" camino para ir de " + i + " a " +j);
         this.peso=D[i][j];
         road.add(i);
-        System.out.println(i);
+        //System.out.println(i);
         recupera(i, j);
         road.add(j);
-        System.out.println(j);
+        //System.out.println(j);
     }
 
     ;
@@ -81,7 +81,7 @@ public class Floyd {
         int k = traza[i][j];
         if (k != -1) {
             recupera(i, k);
-            System.out.println(k);
+            //System.out.println(k);
             road.add(k);
             recupera(k, j);
         }

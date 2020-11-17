@@ -75,13 +75,13 @@ public class Dijkstra{
     public void printSolution(int iniVertice,int[] distances,int[] padres, int finalVertice) 
     { 
         int nVertices = distances.length; 
-        System.out.print("Vertex\t Distance\tPath"); 
+        //System.out.print("Vertex\t Distance\tPath"); 
           
         for (int VerticeIndice = 0;VerticeIndice < nVertices; VerticeIndice++){
             if (VerticeIndice != iniVertice){ 
-                System.out.print("\n" + iniVertice + " -> "); 
-                System.out.print(VerticeIndice + " \t\t "); 
-                System.out.print(distances[VerticeIndice] + "\t\t"); //distancia hacia el vertice i
+                //System.out.print("\n" + iniVertice + " -> "); 
+                //System.out.print(VerticeIndice + " \t\t "); 
+                //System.out.print(distances[VerticeIndice] + "\t\t"); //distancia hacia el vertice i
                 if(VerticeIndice == finalVertice){
                     peso = distances[VerticeIndice];
                 }
@@ -103,7 +103,7 @@ public class Dijkstra{
             return; 
         } 
         printPath(padres[verticeInicial],VerticeIndice, padres,finalVertice);
-        System.out.print(verticeInicial + " "); 
+        //System.out.print(verticeInicial + " "); 
         
         if(VerticeIndice == finalVertice){
             road.add(verticeInicial);
