@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="610.0" prefWidth="850.0" style="-fx-background-color: #222222;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="waze.WazeController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="610.0" prefWidth="850.0" style="-fx-background-color: #222222;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="waze.WazeController">
    <children>
       <ImageView fx:id="mapa" fitHeight="600.0" fitWidth="572.0" layoutX="297.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -951,11 +951,11 @@
       <Button fx:id="carros" layoutX="22.0" layoutY="176.0" mnemonicParsing="false" onAction="#selCarros" prefHeight="25.0" prefWidth="139.0" text="Seleccionar auto" />
       <Label layoutX="26.0" layoutY="426.0" prefHeight="17.0" prefWidth="74.0" text="Costo Inicial:" textFill="WHITE" />
       <Label layoutX="26.0" layoutY="446.0" text="Distancia Inicial:" textFill="WHITE" />
-      <Label fx:id="labelCostoInicial" layoutX="136.0" layoutY="430.0" prefHeight="17.0" prefWidth="111.0" text=" " textFill="WHITE" />
-      <Label fx:id="labelDistanciaInicial" layoutX="134.0" layoutY="446.0" prefHeight="17.0" prefWidth="111.0" text=" " textFill="WHITE" />
-      <Label layoutX="28.0" layoutY="471.0" prefHeight="17.0" prefWidth="74.0" text="Costo Final:" textFill="WHITE" />
-      <Label layoutX="28.0" layoutY="491.0" text="Distancia Final:" textFill="WHITE" />
-      <Label fx:id="labelCostoFinal" layoutX="138.0" layoutY="475.0" prefHeight="17.0" prefWidth="111.0" text=" " textFill="WHITE" />
+      <Label fx:id="labelCostoInicial" layoutX="136.0" layoutY="428.0" prefHeight="17.0" prefWidth="111.0" text=" " textFill="WHITE" />
+      <Label fx:id="labelDistanciaInicial" layoutX="136.0" layoutY="448.0" prefHeight="17.0" prefWidth="111.0" text=" " textFill="WHITE" />
+      <Label layoutX="26.0" layoutY="471.0" prefHeight="17.0" prefWidth="74.0" text="Costo Final:" textFill="WHITE" />
+      <Label layoutX="26.0" layoutY="491.0" text="Distancia Final:" textFill="WHITE" />
+      <Label fx:id="labelCostoFinal" layoutX="136.0" layoutY="471.0" prefHeight="17.0" prefWidth="111.0" text=" " textFill="WHITE" />
       <Label fx:id="labelDistanciaFinal" layoutX="136.0" layoutY="491.0" prefHeight="17.0" prefWidth="111.0" text=" " textFill="WHITE" />
    </children>
 </AnchorPane>

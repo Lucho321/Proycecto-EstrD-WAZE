@@ -167,7 +167,7 @@ public class WazeController implements Initializable {
                         btnCancelar.setVisible(false);
                     }else{
                        btnComenzar.setDisable(false);
-                       btnComenzar.setText("Nuevo viaje");
+                       btnComenzar.setText("Nuevo Viaje");
                     }
                 } catch (NumberFormatException ex) {
                     Logger.getLogger(WazeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -211,10 +211,10 @@ public class WazeController implements Initializable {
             c.setFill(Color.YELLOW);
             lblPunto.setText("");
             if(tipoRecorrido){
-                dibujarRutaDijkstra(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));
+                dibujarRutaDijkstra(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()), true);
                 calcularCostoViaje(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));    
             }else{
-                dibujarRutaFloyd(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));
+                dibujarRutaFloyd(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()), true);
                 calcularCostoViaje(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));    
             }
         }
@@ -266,6 +266,9 @@ public class WazeController implements Initializable {
     private void actDijkstra(ActionEvent event){
         tipoRecorrido = true;
         cbxFloyd.setSelected(false);
+        vertices.clear();
+        circles.forEach(x->{x.setFill(Color.WHITE);});
+        lines.forEach(x->{x.setStroke(Color.DARKCYAN);});
         seleccionarRuta();
     }
     
@@ -273,6 +276,9 @@ public class WazeController implements Initializable {
     private void actFloyd(ActionEvent event){
         tipoRecorrido = false;
         cbxDijkstra.setSelected(false);
+        vertices.clear();
+        circles.forEach(x->{x.setFill(Color.WHITE);});
+        lines.forEach(x->{x.setStroke(Color.DARKCYAN);});
         seleccionarRuta();
     }
     
@@ -384,11 +390,13 @@ public class WazeController implements Initializable {
         ruta.add(l);
     }
 
-    private void dibujarRutaDijkstra(int a, int b){
+    private void dibujarRutaDijkstra(int a, int b, boolean band){
         int[][] m = matriz.getMatriz();
         Dijkstra d = new Dijkstra();
         d.dijkstra(m, a, b);
-        camino = d.getRoad();
+        if(band){
+            camino = d.getRoad();
+        }
         int cont = 0;
         
         for(int i=0; i<camino.size(); i++){
@@ -406,11 +414,13 @@ public class WazeController implements Initializable {
         });
         
     }
-    private void dibujarRutaFloyd(int a, int b){
+    private void dibujarRutaFloyd(int a, int b, boolean band){
         Floyd f = new Floyd();
         f.floyd(a, b);
+        if(band){
+            camino = f.getRoad();
+        }
         
-        camino = f.getRoad();
         int cont = 0;
         
         for(int i=0; i<camino.size(); i++){
@@ -429,11 +439,30 @@ public class WazeController implements Initializable {
     }
     @FXML
     private void actComenzar(ActionEvent event) throws InterruptedException {
-        carroUsar();
-        contCaminos = 0;
-        btnComenzar.setDisable(true);
-        btnCancelar.setVisible(false);
-        recorrido();
+        if(btnComenzar.getText().equals("Comenzar Viaje")){
+            carroUsar();
+            contCaminos = 0;
+            btnComenzar.setDisable(true);
+            btnCancelar.setVisible(false);
+            cbxDijkstra.setDisable(true);
+            cbxFloyd.setDisable(true);
+            recorrido();
+        }
+        if(btnComenzar.getText().equals("Nuevo Viaje")){
+            anchorPane.getChildren().remove(iv);
+            circles.forEach(x->x.setFill(Color.WHITE));
+            lines.forEach(x->x.setStroke(Color.DARKCYAN));
+            btnComenzar.setText("Comenzar Viaje");
+            cbxDijkstra.setDisable(false);
+            cbxFloyd.setDisable(false);
+            labelCostoFinal.setText("");
+            labelCostoInicial.setText("");
+            labelDistanciaFinal.setText("");
+            labelDistanciaInicial.setText("");
+            seleccionarRuta();
+            
+        }
+        
     }
     
     private void recorrido() throws InterruptedException{
@@ -464,12 +493,11 @@ public class WazeController implements Initializable {
         int duracion;
         Line line;
         
-        
         if(contCaminos+1 < camino.size()){
             enMovimiento = true;
             a = circles.get(camino.get(contCaminos));
             b = circles.get(camino.get(contCaminos+1)); 
-
+            
             duracion = matriz.getPeso(Integer.valueOf(a.getId()), Integer.valueOf(b.getId()));
             line = new Line(a.getLayoutX(), a.getLayoutY(), b.getLayoutX(), b.getLayoutY());
 
@@ -477,10 +505,15 @@ public class WazeController implements Initializable {
             p.setDuration(Duration.seconds(duracion));
             p.setPath(line); 
             p.play();
+            if(tipoRecorrido){
+                dibujarRutaDijkstra(Integer.valueOf(a.getId()), Integer.valueOf(vertices.get(1).getId()), false);
+            }else{
+                dibujarRutaFloyd(Integer.valueOf(a.getId()), Integer.valueOf(vertices.get(1).getId()), false);
+            }
+            iv.toFront();
         }else{
             enMovimiento = false;
-        }
-                
+        } 
         return "";
     }
 
