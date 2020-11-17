@@ -39,6 +39,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import waze.algoritmos.Dijkstra;
 import waze.algoritmos.Floyd;
+import waze.util.AppContext;
 import waze.util.Matriz;
 import waze.util.Vertice;
 
@@ -109,6 +110,14 @@ public class WazeController implements Initializable {
     ImageView iv = new ImageView(image);
     @FXML
     private Button carros;
+    @FXML
+    private Label labelCostoInicial;
+    @FXML
+    private Label labelDistanciaInicial;
+    @FXML
+    private Label labelCostoFinal;
+    @FXML
+    private Label labelDistanciaFinal;
     /**
      * Initializes the controller class.
      */
@@ -167,9 +176,19 @@ public class WazeController implements Initializable {
                 }
             }
         });
-        
     }    
     
+    
+    public void carroUsar(){
+        String carro = (String) AppContext.getInstance().get("Carro");  
+        if(carro!=null){
+            Image image = new Image("/imagenes/"+carro+".png");
+            iv = new ImageView(image);
+            System.out.println(carro);
+        }else{
+            System.out.println("NADA");
+        }
+    }
 
     private void clickLine(MouseEvent event) {
         Line l = (Line)(event.getSource());
@@ -285,6 +304,11 @@ public class WazeController implements Initializable {
 
     @FXML
     private void actCancelar(ActionEvent event) {
+        labelCostoInicial.setText("");
+        labelDistanciaInicial.setText("");
+        labelCostoFinal.setText("");
+        labelDistanciaFinal.setText("");
+        
         if(modo.equals("puntoInicio")){
             vertices.get(0).setFill(Color.WHITE);
             vertices.clear();
@@ -405,6 +429,7 @@ public class WazeController implements Initializable {
     }
     @FXML
     private void actComenzar(ActionEvent event) throws InterruptedException {
+        carroUsar();
         contCaminos = 0;
         btnComenzar.setDisable(true);
         btnCancelar.setVisible(false);
@@ -490,6 +515,11 @@ public class WazeController implements Initializable {
         kmInicialViaje = aux/4;
         System.out.println("costo Final  ¢ "+costoInicialViaje);
         System.out.println("Km Final    km "+kmInicialViaje);
+        labelCostoInicial.setText("¢ "+costoInicialViaje);
+        labelDistanciaInicial.setText("km "+kmInicialViaje);
+        //FALTA 
+        labelCostoFinal.setText("¢ "+costoInicialViaje);
+        labelDistanciaFinal.setText("km "+kmInicialViaje);
     } 
      
     @FXML

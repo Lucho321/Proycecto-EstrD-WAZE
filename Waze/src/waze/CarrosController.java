@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import waze.util.AppContext;
 
 /**
  * FXML Controller class
@@ -63,25 +64,25 @@ public class CarrosController implements Initializable {
 
     @FXML
     private void actLandRober(MouseEvent event) {
-        carroSeleccionado="landrober";
+        carroSeleccionado="LandRover";
         alert.setTitle("Auto seleccionado");
         alert.setHeaderText(null);
-        alert.setContentText("Auto seleccionado: Land Rober");
+        alert.setContentText("Auto seleccionado: Land Rover");
         alert.showAndWait();
     }
 
     @FXML
     private void actLexuz(MouseEvent event) {
-        carroSeleccionado="lexuz";
+        carroSeleccionado="lexus";
         alert.setTitle("Auto seleccionado");
         alert.setHeaderText(null);
-        alert.setContentText("Auto seleccionado: Lexuz");
+        alert.setContentText("Auto seleccionado: Lexus");
         alert.showAndWait();
     }
 
     @FXML
     private void actBugatti(MouseEvent event) {
-        carroSeleccionado="nugatti";
+        carroSeleccionado="Bugatti";
         alert.setTitle("Auto seleccionado");
         alert.setHeaderText(null);
         alert.setContentText("Auto seleccionado: Bugatti");
@@ -90,7 +91,7 @@ public class CarrosController implements Initializable {
 
     @FXML
     private void actBMW(MouseEvent event) {
-        carroSeleccionado="bmw";
+        carroSeleccionado="BMW";
         alert.setTitle("Auto seleccionado");
         alert.setHeaderText(null);
         alert.setContentText("Auto seleccionado: BMW");
@@ -100,10 +101,12 @@ public class CarrosController implements Initializable {
     @FXML
     private void actCerrar(ActionEvent event) {
     Stage stage = (Stage) btnCerrar.getScene().getWindow();
+    AppContext.getInstance().set("Carro", carroSeleccionado);
     stage.close();
 }
     public String getCarro(){
         return carroSeleccionado;
     }
+    
     
 }

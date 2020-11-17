@@ -21,7 +21,7 @@
       </ImageView>
       <ImageView fx:id="imgLexuz" fitHeight="100.0" fitWidth="100.0" layoutX="68.0" layoutY="94.0" onMouseClicked="#actLexuz" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../imagenes/lexuz.png" />
+            <Image url="@../imagenes/lexus.png" />
          </image>
       </ImageView>
       <ImageView fx:id="imgBUGATTI" fitHeight="106.0" fitWidth="144.0" layoutX="68.0" layoutY="272.0" onMouseClicked="#actBugatti" pickOnBounds="true" preserveRatio="true">
