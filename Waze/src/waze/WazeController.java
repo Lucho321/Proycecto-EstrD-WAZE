@@ -118,12 +118,14 @@ public class WazeController implements Initializable {
     private Label labelCostoFinal;
     @FXML
     private Label labelDistanciaFinal;
-    /**
-     * Initializes the controller class.
-     */
+    private Alert alert;
+    private final int noCamino = 9999999;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        btnCerrarCalle.setDisable(true);
+        btnChoque.setDisable(true);
+        btnTrafico.setDisable(true);
         
         addVertices();
         dibujarLineas();
@@ -253,13 +255,45 @@ public class WazeController implements Initializable {
     private void actChoque(ActionEvent event) {
         //d.dijkstra(m.getMatriz(), 1, 10);
     }
-
+    
+    int tipoTrafico;
     @FXML
     private void actTrafico(ActionEvent event) {
+        try{
+            Stage stage = new Stage();
+            Parent root1 = FXMLLoader.load(getClass().getResource("TipoTrafico.fxml"));
+            stage.setScene(new Scene(root1));
+            stage.setTitle("Seleccion de tráfico");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+            stage.show();
+        }catch(IOException ex){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Lo sentimos, en este momento las calles colapsaron");
+            alert.show();
+        }
+        
     }
 
+    private void cargarPesoTrafico(){
+        if(AppContext.getInstance().get("tipoTrafico") != null){
+            tipoTrafico = (Integer) AppContext.getInstance().get("tipoTrafico");
+            if(c1 != null && c2 != null){
+                int nuevoPeso = matriz.getPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()));
+                System.out.println("Peso viejo "+nuevoPeso);
+
+                matriz.setPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()), (nuevoPeso*tipoTrafico));
+                int x = matriz.getPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()));
+                System.out.println("nuevo peso "+x);
+            }    
+        }
+    } 
     @FXML
     private void actCerrarCalle(ActionEvent event) {
+        if(c1 != null && c2 != null){
+            matriz.setPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()), noCamino);
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Se ha cerrado la calle");
+        }
     }
     
     @FXML
@@ -405,8 +439,9 @@ public class WazeController implements Initializable {
                         c2=x;
                     }
                 });
-                System.out.println("C1 "+c1.getId());
-                System.out.println("C2 "+c2.getId());
+                btnCerrarCalle.setDisable(false);
+                btnChoque.setDisable(false);
+                btnTrafico.setDisable(false);
             }
         });
     }
@@ -462,6 +497,7 @@ public class WazeController implements Initializable {
     private void actComenzar(ActionEvent event) throws InterruptedException {
         if(btnComenzar.getText().equals("Comenzar Viaje")){
             carroUsar();
+            cargarPesoTrafico();
             contCaminos = 0;
             btnComenzar.setDisable(true);
             btnCancelar.setVisible(false);
@@ -480,10 +516,14 @@ public class WazeController implements Initializable {
             labelCostoInicial.setText("");
             labelDistanciaFinal.setText("");
             labelDistanciaInicial.setText("");
+           
+            vertices.clear();
+            matriz.inicializar();
             seleccionarRuta();
-            
         }
-        
+        btnCerrarCalle.setDisable(true);
+        btnChoque.setDisable(true);
+        btnTrafico.setDisable(true);
     }
     
     private void recorrido() throws InterruptedException{
