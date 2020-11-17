@@ -375,6 +375,7 @@ public class WazeController implements Initializable {
         });
     }
     
+    Circle c1,c2;
     private void dibujarLinea(double startX, double startY, double endX, double endY, Color c){
         Line l = new Line();
         l.setId(String.valueOf(cont));
@@ -388,6 +389,26 @@ public class WazeController implements Initializable {
         anchorPane.getChildren().add(l);
         lines.add(l);
         ruta.add(l);
+        
+        l.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        double posA1, posA2, posB1, posB2;
+            public void handle(final MouseEvent mouseEvent) {
+                l.setStroke(Color.RED);
+                posA1 = l.getStartX(); posA2 = l.getStartY();
+                posB1 = l.getEndX();   posB2 = l.getEndY();
+
+                circles.forEach(x->{
+                    if(posA1 == x.getLayoutX() && posA2 == x.getLayoutY()){
+                        c1=x;
+                    }
+                    if(posB1 == x.getLayoutX() && posB2 == x.getLayoutY()){
+                        c2=x;
+                    }
+                });
+                System.out.println("C1 "+c1.getId());
+                System.out.println("C2 "+c2.getId());
+            }
+        });
     }
 
     private void dibujarRutaDijkstra(int a, int b, boolean band){
