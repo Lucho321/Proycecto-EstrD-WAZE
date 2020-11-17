@@ -6,6 +6,7 @@
 package waze;
 
 import com.sun.prism.paint.LinearGradient;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,12 @@ import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -28,6 +34,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import waze.algoritmos.Dijkstra;
 import waze.algoritmos.Floyd;
@@ -99,6 +107,8 @@ public class WazeController implements Initializable {
     private boolean enMovimiento = false;
     Image image = new Image(getClass().getResourceAsStream("/imagenes/carrito.png"));
     ImageView iv = new ImageView(image);
+    @FXML
+    private Button carros;
     /**
      * Initializes the controller class.
      */
@@ -161,7 +171,6 @@ public class WazeController implements Initializable {
     }    
     
 
-    @FXML
     private void clickLine(MouseEvent event) {
         Line l = (Line)(event.getSource());
         l.setStroke(Color.ORANGE);
@@ -184,8 +193,10 @@ public class WazeController implements Initializable {
             lblPunto.setText("");
             if(tipoRecorrido){
                 dibujarRutaDijkstra(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));
+                calcularCostoViaje(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));    
             }else{
                 dibujarRutaFloyd(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));
+                calcularCostoViaje(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));    
             }
         }
         if(modo.equals("puntoLlegada")){
@@ -447,5 +458,55 @@ public class WazeController implements Initializable {
                 
         return "";
     }
+
+    
+    
+    public void calcularCostoViaje(int a, int b){
+        List<Integer> camino;
+        
+        float costoFinalViaje=0, costoInicialViaje=0, aux=0;
+        float kmFinalViaje=0, kmInicialViaje=0;
+        Matriz matriz = new Matriz();
+        int[][] m = matriz.getMatriz();
+        
+        if(cbxDijkstra.isSelected()){//peso * $100
+            Dijkstra d = new Dijkstra();
+            d.dijkstra(m, a, b);
+            camino = d.getRoad();
+        }else{//is cbxFloyd
+            Floyd f = new Floyd();
+            f.floyd(a, b);
+            camino = f.getRoad();  
+        }
+        
+        for(int i=0; i<camino.size(); i++){
+            if((i+1)<camino.size()){
+               aux += matriz.getPeso(camino.get(i), camino.get(i+1));
+
+               System.out.println("costo: "+aux);  
+            }
+        }
+        costoInicialViaje = aux*250;
+        kmInicialViaje = aux/4;
+        System.out.println("costo Final  ¢ "+costoInicialViaje);
+        System.out.println("Km Final    km "+kmInicialViaje);
+    } 
+     
+    @FXML
+    private void selCarros(ActionEvent event) {
+        try{
+            Stage stage = new Stage();
+            Parent root1 = FXMLLoader.load(getClass().getResource("Carros.fxml"));
+            stage.setScene(new Scene(root1));
+            stage.setTitle("Seleccion de auto");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+            stage.show();
+        }catch(IOException ex){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Lo sentimos, en este momento los carritos estan ocupados");
+            alert.show();
+        }
+    }
+
 }
    
