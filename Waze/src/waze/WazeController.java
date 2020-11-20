@@ -726,7 +726,7 @@ public class WazeController implements Initializable {
         int duracion;
         Line line;
         cargarPesoTrafico();
-        if(contCaminos+1 < camino.size() + caminoNuevo.size() && !caminoNuevo.isEmpty()){
+        if(!caminoNuevo.isEmpty()){
             enMovimiento = true;
             a = circles.get(caminoNuevo.get(0));
             b = circles.get(caminoNuevo.get(1)); 
