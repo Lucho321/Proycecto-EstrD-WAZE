@@ -28,9 +28,7 @@ public class Floyd {
         return peso;
     }
     
-    public void floyd(int q, int r) { //
-        Matriz m = new Matriz();
-        int[][] mat = m.getMatriz();
+    public void floyd(int[][] mat, int q, int r) { //
         n = 91;
         D = new int[n][n];
         traza = new int[n][n];

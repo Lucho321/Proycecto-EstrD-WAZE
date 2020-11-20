@@ -5,7 +5,6 @@
  */
 package waze;
 
-import com.sun.prism.paint.LinearGradient;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,22 +29,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
-import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.showMessageDialog;
 import waze.algoritmos.Dijkstra;
 import waze.algoritmos.Floyd;
 import waze.util.AppContext;
 import waze.util.Matriz;
-import waze.util.Vertice;
 
 /**
  * FXML Controller class
@@ -71,6 +66,7 @@ public class WazeController implements Initializable {
     private Button btnCerrarCalle;
     
     
+    private List<Object> listaImagenes = new ArrayList<Object>();
 
     private List<Object> lineasSeleccionadas = new ArrayList<Object>();
     private List<Object> verticesSeleccionados = new ArrayList<Object>();
@@ -107,6 +103,9 @@ public class WazeController implements Initializable {
             v86, v87, v88, v89, v90;
     
     private boolean tipoRecorrido; //TRUE DIJKSTRA FALSE FLOYD
+    private ArrayList<Line> rutaInicial = new ArrayList();
+    private ArrayList<Line> callesCerradas = new ArrayList();
+    private ArrayList<Line> rutaNueva = new ArrayList();
     
     private PathTransition p = new PathTransition();
     private boolean enMovimiento = false;
@@ -126,6 +125,7 @@ public class WazeController implements Initializable {
     private Label labelDistanciaFinal;
     private Alert alert;
     private final int noCamino = 9999999;
+    private List<Integer> caminoNuevo = new ArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -230,12 +230,6 @@ public class WazeController implements Initializable {
             btnComenzar.setDisable(false);
         }
     }
-      
-    
-    @FXML
-    private void actLineas(ActionEvent event) {
-        setLineasVisible();
-    } 
 
     @FXML
     private void actVertices(ActionEvent event) {
@@ -253,8 +247,7 @@ public class WazeController implements Initializable {
             x.setVisible(btnVertices.isSelected());
         });
     }
-    
-    Matriz m = new Matriz();
+    private int[][] m;
     Dijkstra d = new Dijkstra();
     Floyd f = new Floyd();
     @FXML
@@ -276,12 +269,18 @@ public class WazeController implements Initializable {
                 System.out.println("Boton B->A");
             }
            	
-        	
+            if(lineAux != null){
+                callesCerradas.add(lineAux);
+            }
    
 
             
             alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Se ha cerrado la calle");
+            alert.setContentText("Ha habido un choque");
+            alert.show();
+            listaImagenes.forEach(x->{
+                anchorPane.getChildren().remove((Node)x);
+            });
         }
     }
     
@@ -296,6 +295,9 @@ public class WazeController implements Initializable {
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)event.getSource()).getScene().getWindow());
             stage.show();
+            listaImagenes.forEach(x->{
+                anchorPane.getChildren().remove((Node)x);
+            });
         }catch(IOException ex){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Lo sentimos, en este momento las calles colapsaron");
             alert.show();
@@ -335,8 +337,15 @@ public class WazeController implements Initializable {
         if(c1 != null && c2 != null){
             matriz.setPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()), noCamino);
             matriz.setPeso(Integer.valueOf(c2.getId()), Integer.valueOf(c1.getId()), noCamino);
+            if(lineAux != null){
+                callesCerradas.add(lineAux);
+            }
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Se ha cerrado la calle");
+            alert.show();
+            listaImagenes.forEach(x->{
+                anchorPane.getChildren().remove((Node)x);
+            });
         }
     }
     
@@ -454,6 +463,7 @@ public class WazeController implements Initializable {
     }
     
     Circle c1,c2;
+    Line lineAux = new Line();
     private void dibujarLinea(double startX, double startY, double endX, double endY, Color c){
         Line l = new Line();
         l.setId(String.valueOf(cont));
@@ -465,8 +475,18 @@ public class WazeController implements Initializable {
         l.setStroke(c);
         l.setStrokeLineCap(StrokeLineCap.ROUND);
         anchorPane.getChildren().add(l);
+        if(c == Color.YELLOW){
+            rutaInicial.add(l);
+        }
+        if(c == Color.BLUE){
+            rutaNueva.add(l);
+            rutaInicial.add(l);
+        }
+        if(c == Color.RED){
+            callesCerradas.add(l);
+        }
         lines.add(l);
-        ruta.add(l);
+        
         
         l.setOnMouseClicked(new EventHandler<MouseEvent>() {
             
@@ -474,6 +494,7 @@ public class WazeController implements Initializable {
             public void handle(final MouseEvent mouseEvent) {
                 if(!l.getStroke().equals(Color.RED)){
                     l.setStroke(Color.RED);
+                    lineAux = l;
                     posA1 = l.getStartX(); posA2 = l.getStartY();
                     posB1 = l.getEndX();   posB2 = l.getEndY();
 
@@ -488,63 +509,141 @@ public class WazeController implements Initializable {
                     btnCerrarCalle.setDisable(false);
                     btnChoque.setDisable(false);
                     btnTrafico.setDisable(false);
+                    
+                    mostrarPuntosAB();
+                    ImageView A = new ImageView(iA);
+                    ImageView B = new ImageView(iB);
+                    A.setLayoutX(c1.getLayoutX()); A.setLayoutY(c1.getLayoutY()-20);
+                    B.setLayoutX(c2.getLayoutX()); B.setLayoutY(c2.getLayoutY()-20); 
+                    anchorPane.getChildren().add(A);anchorPane.getChildren().add(B);
+                    listaImagenes.add(A);listaImagenes.add(B);
                 }else{//desmarcar linea
+                    lineAux = null;
                     l.setStroke(Color.DARKCYAN);
                     posA1=0; posA2=0; posB1=0; posB2=0;
+                    listaImagenes.forEach(x->{
+                        anchorPane.getChildren().remove((Node)x);
+                    });
+                    btnCerrarCalle.setDisable(true);
+                    btnChoque.setDisable(true);
+                    btnTrafico.setDisable(true);
                 }
-               
-                ImageView A = new ImageView(iA);
-                ImageView B = new ImageView(iB);
-                A.setLayoutX(c1.getLayoutX()); A.setLayoutY(c1.getLayoutY()-20);
-                B.setLayoutX(c2.getLayoutX()); B.setLayoutY(c2.getLayoutY()-20); 
-                anchorPane.getChildren().add(A);anchorPane.getChildren().add(B);
-                }
-            });
+                
+            }
+        });
+        }
+    
+    
+    private void mostrarPuntosAB(){
+        listaImagenes.forEach(x->{
+            anchorPane.getChildren().remove((Node)x);
+        });
     }
 
+    int verticeActual;
     private void dibujarRutaDijkstra(int a, int b, boolean band){
-        int[][] m = matriz.getMatriz();
-        Dijkstra d = new Dijkstra();
-        d.dijkstra(m, a, b);
-        if(band){
-            camino = d.getRoad();
-        }
-        int cont = 0;
+        m = matriz.getMatriz();
         
-        for(int i=0; i<camino.size(); i++){
-            Circle c = circles.get(camino.get(i));
-            c.setFill(Color.YELLOW);
-            Circle c2 = new Circle();
-            
-            if(i+1 < camino.size()){
-                c2 = circles.get(camino.get(i+1));
-                dibujarLinea(c.getLayoutX(), c.getLayoutY(), c2.getLayoutX(), c2.getLayoutY(), Color.YELLOW);
+        if(band){
+            Dijkstra d = new Dijkstra();
+            d.dijkstra(m, a, b);
+            camino = d.getRoad();
+            caminoNuevo = camino;
+            int cont = 0;
+            System.out.println(caminoNuevo.get(0) + " - " + b);
+            for(int i=0; i<camino.size(); i++){
+                Circle c = circles.get(camino.get(i));
+                c.setFill(Color.YELLOW);
+                Circle c2 = new Circle();
+
+                if(i+1 < camino.size()){
+                    c2 = circles.get(camino.get(i+1));
+                    dibujarLinea(c.getLayoutX(), c.getLayoutY(), c2.getLayoutX(), c2.getLayoutY(), Color.YELLOW);
+                }
             }
+            circles.forEach(x->{
+                x.toFront();
+            });
+        }else{
+            d = new Dijkstra();
+            if(!caminoNuevo.isEmpty()){
+                System.out.println(caminoNuevo.get(0) + " - " + b);
+                
+                for(int i=0; i<caminoNuevo.size(); i++){
+                    Circle c = circles.get(caminoNuevo.get(i));
+                    c.setFill(Color.YELLOW);
+                    Circle c2 = new Circle();
+
+                    if(i+1 < caminoNuevo.size()){
+                        c2 = circles.get(caminoNuevo.get(i+1));
+                        dibujarLinea(c.getLayoutX(), c.getLayoutY(), c2.getLayoutX(), c2.getLayoutY(), Color.BLUE);
+                    }
+                }
+            }
+            
+            circles.forEach(x->{
+                x.toFront();
+            });
+            
+            rutaNueva.forEach(x->{
+                x.setStroke(Color.BLUE);
+            });
+            rutaInicial.forEach(x->{
+                x.setStroke(Color.YELLOW);
+            });
+            callesCerradas.forEach(x->{
+                x.setStroke(Color.RED);
+            });
         }
-        circles.forEach(x->{
-            x.toFront();
-        });
+        
+        
+        
         
     }
     private void dibujarRutaFloyd(int a, int b, boolean band){
-        Floyd f = new Floyd();
-        f.floyd(a, b);
+        //f = new Floyd();
+        m = matriz.getMatriz();
         if(band){
+            f.floyd(m, a, b);
             camino = f.getRoad();
-        }
-        
-        int cont = 0;
-        
-        for(int i=0; i<camino.size(); i++){
-            Circle c = circles.get(camino.get(i));
-            c.setFill(Color.YELLOW);
-            Circle c2 = new Circle();
-            
-            if(i+1 < camino.size()){
-                c2 = circles.get(camino.get(i+1));
-                dibujarLinea(c.getLayoutX(), c.getLayoutY(), c2.getLayoutX(), c2.getLayoutY(), Color.YELLOW);
+            caminoNuevo = camino;
+            int cont = 0;
+            for(int i=0; i<camino.size(); i++){
+                Circle c = circles.get(camino.get(i));
+                c.setFill(Color.YELLOW);
+                Circle c2 = new Circle();
+
+                if(i+1 < camino.size()){
+                    c2 = circles.get(camino.get(i+1));
+                    dibujarLinea(c.getLayoutX(), c.getLayoutY(), c2.getLayoutX(), c2.getLayoutY(), Color.YELLOW);
+                }
+            }
+        }else{
+            f = new Floyd();
+            if(!caminoNuevo.isEmpty()){
+                System.out.println(caminoNuevo.get(0) + " - " + b);
+                
+                for(int i=0; i<caminoNuevo.size(); i++){
+                    Circle c = circles.get(caminoNuevo.get(i));
+                    c.setFill(Color.YELLOW);
+                    Circle c2 = new Circle();
+
+                    if(i+1 < caminoNuevo.size()){
+                        c2 = circles.get(caminoNuevo.get(i+1));
+                        dibujarLinea(c.getLayoutX(), c.getLayoutY(), c2.getLayoutX(), c2.getLayoutY(), Color.BLUE);
+                    }
+                }
             }
         }
+        rutaNueva.forEach(x->{
+                x.setStroke(Color.BLUE);
+            });
+            rutaInicial.forEach(x->{
+                x.setStroke(Color.YELLOW);
+            });
+            callesCerradas.forEach(x->{
+                x.setStroke(Color.RED);
+            });
         circles.forEach(x->{
             x.toFront();
         });
@@ -553,7 +652,6 @@ public class WazeController implements Initializable {
     private void actComenzar(ActionEvent event) throws InterruptedException {
         if(btnComenzar.getText().equals("Comenzar Viaje")){
             carroUsar();
-            cargarPesoTrafico();
             contCaminos = 0;
             btnComenzar.setDisable(true);
             btnCancelar.setVisible(false);
@@ -574,7 +672,8 @@ public class WazeController implements Initializable {
             labelDistanciaInicial.setText("");
            
             vertices.clear();
-            matriz.inicializar();
+            rutaInicial.clear();
+            rutaNueva.clear();
             seleccionarRuta();
         }
         btnCerrarCalle.setDisable(true);
@@ -604,16 +703,19 @@ public class WazeController implements Initializable {
         thread.start();
     }
     
+    Circle a, b;
     private String mover() throws NumberFormatException, InterruptedException {
-        Circle a;
-        Circle b;
+        
         int duracion;
         Line line;
-        
-        if(contCaminos+1 < camino.size()){
+        cargarPesoTrafico();
+        if(contCaminos+1 < camino.size() + caminoNuevo.size() && !caminoNuevo.isEmpty()){
             enMovimiento = true;
-            a = circles.get(camino.get(contCaminos));
-            b = circles.get(camino.get(contCaminos+1)); 
+            a = circles.get(caminoNuevo.get(0));
+            b = circles.get(caminoNuevo.get(1)); 
+            //dibujarLinea(a.getLayoutX(), a.getLayoutX(), b.getLayoutX(), b.getLayoutX(), Color.BLUE);
+            calcularCostoViajeFinal(camino.get(0), Integer.valueOf(vertices.get(1).getId()));
+            verticeActual = Integer.valueOf(a.getId());
             
             duracion = matriz.getPeso(Integer.valueOf(a.getId()), Integer.valueOf(b.getId()));
             line = new Line(a.getLayoutX(), a.getLayoutY(), b.getLayoutX(), b.getLayoutY());
@@ -623,8 +725,14 @@ public class WazeController implements Initializable {
             p.setPath(line); 
             p.play();
             if(tipoRecorrido){
+                Dijkstra d = new Dijkstra();
+                d.dijkstra(m, Integer.valueOf(b.getId()), Integer.valueOf(vertices.get(1).getId()));
+                caminoNuevo = d.getRoad();
                 dibujarRutaDijkstra(Integer.valueOf(a.getId()), Integer.valueOf(vertices.get(1).getId()), false);
             }else{
+                Floyd f = new Floyd();
+                f.floyd(m, Integer.valueOf(b.getId()), Integer.valueOf(vertices.get(1).getId()));
+                caminoNuevo = f.getRoad();
                 dibujarRutaFloyd(Integer.valueOf(a.getId()), Integer.valueOf(vertices.get(1).getId()), false);
             }
             iv.toFront();
@@ -649,7 +757,7 @@ public class WazeController implements Initializable {
             camino = d.getRoad();
         }else{//is cbxFloyd
             Floyd f = new Floyd();
-            f.floyd(a, b);
+            f.floyd(m, a, b);
             camino = f.getRoad();  
         }
         
@@ -673,16 +781,15 @@ public class WazeController implements Initializable {
     
     void calcularCostoViajeFinal(int a, int b){
         float costoFinalViaje=0,kmFinalViaje=0, aux=0;
-        Matriz matriz = new Matriz();
-        int[][] m = matriz.getMatriz();
-        
+        m = matriz.getMatriz();
+        List<Integer> camino = new ArrayList();
         if(cbxDijkstra.isSelected()){//peso * $100
             Dijkstra d = new Dijkstra();
             d.dijkstra(m, a, b);
             camino = d.getRoad();
         }else{//is cbxFloyd
             Floyd f = new Floyd();
-            f.floyd(a, b);
+            f.floyd(m, a, b);
             camino = f.getRoad();  
         }
         
@@ -713,6 +820,10 @@ public class WazeController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Lo sentimos, en este momento los carritos estan ocupados");
             alert.show();
         }
+    }
+
+    @FXML
+    private void actLineas(ActionEvent event) {
     }
 
 }
