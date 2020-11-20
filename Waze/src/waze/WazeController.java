@@ -56,63 +56,24 @@ public class WazeController implements Initializable {
     private CheckBox btnVertices;
     @FXML
     private CheckBox btnlineas;
-    
-    
     @FXML
     private Button btnChoque;
     @FXML
     private Button btnTrafico;
     @FXML
     private Button btnCerrarCalle;
-    
-    
-    private List<Object> listaImagenes = new ArrayList<Object>();
-
-    private List<Object> lineasSeleccionadas = new ArrayList<Object>();
-    private List<Object> verticesSeleccionados = new ArrayList<Object>();
-    
     @FXML
     private CheckBox cbxFloyd;
     @FXML
     private CheckBox cbxDijkstra;
-
-    private int contCaminos;
-    private List<Circle> circles = new ArrayList();
-    private List<Circle> vertices = new ArrayList();
-    private List<Line> lines = new ArrayList();
-    private List<Line> ruta = new ArrayList();
-    private List<Integer> camino = new ArrayList();
-    @FXML
+     @FXML
     private Label lblPunto;
     @FXML
     private Button btnCancelar;
-    
-    private String modo = "";
-    private Matriz matriz = new Matriz();
     @FXML
     private Button btnComenzar;
     @FXML
     private AnchorPane anchorPane;
-    
-    @FXML
-    private Circle v, v8, v9, v33, v34, v10, v46, v48, v45, v35, v36, v32, v43, v11, v37, v39, v38, 
-            v49, v7, v42, v54, v50, v65, v64, v6, v66, v30, v5, v4, v3, v29, v28, v2, v1, v12,
-            v31, v41, v27, v26, v44, v47, v63, v72, v57, v55, v25, v60, v58, v59, v24, v61, v84,
-            v62, v73, v74, v53, v83, v51, v40, v13, v14, v69, v52, v68, v67, v71, v76, v75, v23,
-            v82, v21, v22, v20, v81, v80, v70, v77, v19, v79, v78, v18, v15, v16, v17, v56, v85, 
-            v86, v87, v88, v89, v90;
-    
-    private boolean tipoRecorrido; //TRUE DIJKSTRA FALSE FLOYD
-    private ArrayList<Line> rutaInicial = new ArrayList();
-    private ArrayList<Line> callesCerradas = new ArrayList();
-    private ArrayList<Line> rutaNueva = new ArrayList();
-    
-    private PathTransition p = new PathTransition();
-    private boolean enMovimiento = false;
-    Image iA = new Image(getClass().getResourceAsStream("/imagenes/A.png"));
-    Image iB = new Image(getClass().getResourceAsStream("/imagenes/B.png"));
-    Image image = new Image(getClass().getResourceAsStream("/imagenes/carrito.png"));
-    ImageView iv = new ImageView(image);
     @FXML
     private Button carros;
     @FXML
@@ -123,9 +84,42 @@ public class WazeController implements Initializable {
     private Label labelCostoFinal;
     @FXML
     private Label labelDistanciaFinal;
+    @FXML
+    private Circle v, v8, v9, v33, v34, v10, v46, v48, v45, v35, v36, v32, v43, v11, v37, v39, v38, 
+            v49, v7, v42, v54, v50, v65, v64, v6, v66, v30, v5, v4, v3, v29, v28, v2, v1, v12,
+            v31, v41, v27, v26, v44, v47, v63, v72, v57, v55, v25, v60, v58, v59, v24, v61, v84,
+            v62, v73, v74, v53, v83, v51, v40, v13, v14, v69, v52, v68, v67, v71, v76, v75, v23,
+            v82, v21, v22, v20, v81, v80, v70, v77, v19, v79, v78, v18, v15, v16, v17, v56, v85, 
+            v86, v87, v88, v89, v90;
+    
+    private List<Object> listaImagenes = new ArrayList<Object>();
+    private List<Object> lineasSeleccionadas = new ArrayList<Object>();
+    private List<Object> verticesSeleccionados = new ArrayList<Object>();
+    private List<Circle> circles = new ArrayList();
+    private List<Circle> vertices = new ArrayList();
+    private List<Line> lines = new ArrayList();
+    private List<Line> ruta = new ArrayList();
+    private List<Integer> camino = new ArrayList();
+    private ArrayList<Line> rutaInicial = new ArrayList();
+    private ArrayList<Line> callesCerradas = new ArrayList();
+    private ArrayList<Line> rutaNueva = new ArrayList();
+    private List<Integer> caminoNuevo = new ArrayList();
+    
+    private int contCaminos;
+    private boolean tipoRecorrido; //TRUE DIJKSTRA FALSE FLOYD
+    private String modo = "";
+    private Matriz matriz = new Matriz();
     private Alert alert;
     private final int noCamino = 9999999;
-    private List<Integer> caminoNuevo = new ArrayList();
+
+    private PathTransition p = new PathTransition();
+    private boolean enMovimiento = false;
+    Image iA = new Image(getClass().getResourceAsStream("/imagenes/A.png"));
+    Image iB = new Image(getClass().getResourceAsStream("/imagenes/B.png"));
+    Image image = new Image(getClass().getResourceAsStream("/imagenes/carrito.png"));
+    Image iCerrada = new Image(getClass().getResourceAsStream("/imagenes/cerrada.png"));
+    Image iChoque = new Image(getClass().getResourceAsStream("/imagenes/choq.png"));
+    ImageView iv = new ImageView(image);
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -250,6 +244,7 @@ public class WazeController implements Initializable {
     private int[][] m;
     Dijkstra d = new Dijkstra();
     Floyd f = new Floyd();
+    
     @FXML
     private void actChoque(ActionEvent event) {
         if(c1 != null && c2 != null){
@@ -272,9 +267,7 @@ public class WazeController implements Initializable {
             if(lineAux != null){
                 callesCerradas.add(lineAux);
             }
-   
-
-            
+            posImagenes(2);
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Ha habido un choque");
             alert.show();
@@ -332,14 +325,37 @@ public class WazeController implements Initializable {
         return aux;
     }
     
+    private void posImagenes(int tipo){
+        int posA1=0,posA2=0, posB1=0,posB2=0,posX=0,posY=0;
+        
+        posA1=(int)c1.getLayoutX(); posA2=(int)c1.getLayoutY();
+        posB1=(int)c2.getLayoutX(); posB2=(int)c2.getLayoutY();
+        posX=(posA1+posB1)/2;       posY=(posA2+posB2)/2;
+        if(tipo==1){//calle cerrada
+            ImageView ce = new ImageView(iCerrada);
+            ce.setLayoutX(posX-6); 
+            ce.setLayoutY(posY-6);
+            anchorPane.getChildren().add(ce);
+        }else{//choque
+            ImageView ch = new ImageView(iChoque);
+            ch.setLayoutX(posX-6); 
+            ch.setLayoutY(posY-6);
+            anchorPane.getChildren().add(ch);
+        }
+        
+        
+    }
+    
     @FXML
     private void actCerrarCalle(ActionEvent event) {
+        
         if(c1 != null && c2 != null){
             matriz.setPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()), noCamino);
             matriz.setPeso(Integer.valueOf(c2.getId()), Integer.valueOf(c1.getId()), noCamino);
             if(lineAux != null){
                 callesCerradas.add(lineAux);
             }
+            posImagenes(1);
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Se ha cerrado la calle");
             alert.show();
@@ -397,6 +413,7 @@ public class WazeController implements Initializable {
 
     @FXML
     private void actCancelar(ActionEvent event) {
+        dibujarLineas();
         labelCostoInicial.setText("");
         labelDistanciaInicial.setText("");
         labelCostoFinal.setText("");
