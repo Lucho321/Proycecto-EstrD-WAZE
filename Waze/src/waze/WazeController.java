@@ -30,13 +30,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 import waze.algoritmos.Dijkstra;
 import waze.algoritmos.Floyd;
 import waze.util.AppContext;
@@ -106,6 +110,8 @@ public class WazeController implements Initializable {
     
     private PathTransition p = new PathTransition();
     private boolean enMovimiento = false;
+    Image iA = new Image(getClass().getResourceAsStream("/imagenes/A.png"));
+    Image iB = new Image(getClass().getResourceAsStream("/imagenes/B.png"));
     Image image = new Image(getClass().getResourceAsStream("/imagenes/carrito.png"));
     ImageView iv = new ImageView(image);
     @FXML
@@ -214,10 +220,10 @@ public class WazeController implements Initializable {
             lblPunto.setText("");
             if(tipoRecorrido){
                 dibujarRutaDijkstra(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()), true);
-                calcularCostoViaje(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));    
+                calcularCostoViajeInicial(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));    
             }else{
                 dibujarRutaFloyd(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()), true);
-                calcularCostoViaje(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));    
+                calcularCostoViajeInicial(Integer.valueOf(vertices.get(0).getId()), Integer.valueOf(vertices.get(1).getId()));    
             }
         }
         if(modo.equals("puntoLlegada")){
@@ -253,7 +259,30 @@ public class WazeController implements Initializable {
     Floyd f = new Floyd();
     @FXML
     private void actChoque(ActionEvent event) {
-        //d.dijkstra(m.getMatriz(), 1, 10);
+        if(c1 != null && c2 != null){
+            String[] botones = {"A -> B", "B -> A"};
+            int direccion = JOptionPane.showOptionDialog(null, 
+                    "Seleccione una direccion:", 
+                    "Direccion", 	
+                    JOptionPane.DEFAULT_OPTION, 
+                    JOptionPane.QUESTION_MESSAGE, null, 
+                    botones, botones[0]);	
+            if(direccion == 0) {
+                matriz.setPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()), noCamino);
+                System.out.println("Opcion A->B");
+            } 	
+            else if(direccion == 1) {
+                matriz.setPeso(Integer.valueOf(c2.getId()), Integer.valueOf(c1.getId()), noCamino);
+                System.out.println("Boton B->A");
+            }
+           	
+        	
+   
+
+            
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Se ha cerrado la calle");
+        }
     }
     
     int tipoTrafico;
@@ -271,26 +300,41 @@ public class WazeController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Lo sentimos, en este momento las calles colapsaron");
             alert.show();
         }
-        
     }
 
     private void cargarPesoTrafico(){
         if(AppContext.getInstance().get("tipoTrafico") != null){
             tipoTrafico = (Integer) AppContext.getInstance().get("tipoTrafico");
-            if(c1 != null && c2 != null){
-                int nuevoPeso = matriz.getPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()));
-                System.out.println("Peso viejo "+nuevoPeso);
-
-                matriz.setPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()), (nuevoPeso*tipoTrafico));
+            if(c1 != null && c2 != null){//linea seleccionada
+                int pesoViejo = matriz.getPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()));
+                System.out.println("Peso viejo "+pesoViejo);
+                if(tipoTrafico == 1){//consultar trafico normal
+                    int aux = consultarTipoTrafico(pesoViejo);
+                    matriz.setPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()), (aux));
+                }else{
+                    matriz.setPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()), (pesoViejo*tipoTrafico)); 
+                }
+                //verificar
                 int x = matriz.getPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()));
-                System.out.println("nuevo peso "+x);
+                System.out.println("nuevo peso "+x); 
             }    
         }
     } 
+    private int consultarTipoTrafico(int peso){
+        int aux=0;
+        if(tipoTrafico%2==0){//normal
+            aux = peso/2;
+        }else{
+            aux = peso/3;
+        }
+        return aux;
+    }
+    
     @FXML
     private void actCerrarCalle(ActionEvent event) {
         if(c1 != null && c2 != null){
             matriz.setPeso(Integer.valueOf(c1.getId()), Integer.valueOf(c2.getId()), noCamino);
+            matriz.setPeso(Integer.valueOf(c2.getId()), Integer.valueOf(c1.getId()), noCamino);
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Se ha cerrado la calle");
         }
@@ -425,25 +469,37 @@ public class WazeController implements Initializable {
         ruta.add(l);
         
         l.setOnMouseClicked(new EventHandler<MouseEvent>() {
-        double posA1, posA2, posB1, posB2;
+            
+            double posA1, posA2, posB1, posB2;
             public void handle(final MouseEvent mouseEvent) {
-                l.setStroke(Color.RED);
-                posA1 = l.getStartX(); posA2 = l.getStartY();
-                posB1 = l.getEndX();   posB2 = l.getEndY();
+                if(!l.getStroke().equals(Color.RED)){
+                    l.setStroke(Color.RED);
+                    posA1 = l.getStartX(); posA2 = l.getStartY();
+                    posB1 = l.getEndX();   posB2 = l.getEndY();
 
-                circles.forEach(x->{
-                    if(posA1 == x.getLayoutX() && posA2 == x.getLayoutY()){
-                        c1=x;
-                    }
-                    if(posB1 == x.getLayoutX() && posB2 == x.getLayoutY()){
-                        c2=x;
-                    }
-                });
-                btnCerrarCalle.setDisable(false);
-                btnChoque.setDisable(false);
-                btnTrafico.setDisable(false);
-            }
-        });
+                    circles.forEach(x->{
+                        if(posA1 == x.getLayoutX() && posA2 == x.getLayoutY()){
+                            c1=x;
+                        }
+                        if(posB1 == x.getLayoutX() && posB2 == x.getLayoutY()){
+                            c2=x;
+                        }
+                    });
+                    btnCerrarCalle.setDisable(false);
+                    btnChoque.setDisable(false);
+                    btnTrafico.setDisable(false);
+                }else{//desmarcar linea
+                    l.setStroke(Color.DARKCYAN);
+                    posA1=0; posA2=0; posB1=0; posB2=0;
+                }
+               
+                ImageView A = new ImageView(iA);
+                ImageView B = new ImageView(iB);
+                A.setLayoutX(c1.getLayoutX()); A.setLayoutY(c1.getLayoutY()-20);
+                B.setLayoutX(c2.getLayoutX()); B.setLayoutY(c2.getLayoutY()-20); 
+                anchorPane.getChildren().add(A);anchorPane.getChildren().add(B);
+                }
+            });
     }
 
     private void dibujarRutaDijkstra(int a, int b, boolean band){
@@ -580,11 +636,10 @@ public class WazeController implements Initializable {
 
     
     
-    public void calcularCostoViaje(int a, int b){
+    public void calcularCostoViajeInicial(int a, int b){
         List<Integer> camino;
+        float costoInicialViaje=0, kmInicialViaje=0, aux=0;
         
-        float costoFinalViaje=0, costoInicialViaje=0, aux=0;
-        float kmFinalViaje=0, kmInicialViaje=0;
         Matriz matriz = new Matriz();
         int[][] m = matriz.getMatriz();
         
@@ -615,6 +670,34 @@ public class WazeController implements Initializable {
         labelCostoFinal.setText("¢ "+costoInicialViaje);
         labelDistanciaFinal.setText("km "+kmInicialViaje);
     } 
+    
+    void calcularCostoViajeFinal(int a, int b){
+        float costoFinalViaje=0,kmFinalViaje=0, aux=0;
+        Matriz matriz = new Matriz();
+        int[][] m = matriz.getMatriz();
+        
+        if(cbxDijkstra.isSelected()){//peso * $100
+            Dijkstra d = new Dijkstra();
+            d.dijkstra(m, a, b);
+            camino = d.getRoad();
+        }else{//is cbxFloyd
+            Floyd f = new Floyd();
+            f.floyd(a, b);
+            camino = f.getRoad();  
+        }
+        
+        for(int i=0; i<camino.size(); i++){
+            if((i+1)<camino.size()){
+               aux += matriz.getPeso(camino.get(i), camino.get(i+1));
+               System.out.println("costoNuevo: "+aux);  
+            }
+        }
+        costoFinalViaje = aux*250;
+        kmFinalViaje = aux/4;
+
+        labelCostoFinal.setText("¢ "+costoFinalViaje);
+        labelDistanciaFinal.setText("km "+kmFinalViaje);
+    }
      
     @FXML
     private void selCarros(ActionEvent event) {
